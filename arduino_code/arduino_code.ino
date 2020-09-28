@@ -1,3 +1,8 @@
+
+// started september 2020
+// by aaron montoya-moraga
+
+
 void setup() {
   // put your setup code here, to run once:
 
