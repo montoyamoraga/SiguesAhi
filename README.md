@@ -16,10 +16,13 @@ This project is based on using a Arduino Nano 33 IOT
 You can change these variables:
 
 * answerType:
-  * 0 beep
-  * 1 for print
-  * 2 for servo
-* interval
+  * answerType = 0,  beep
+  * answerType = 1, print
+  * answerType = 2, servo
+* interval:
+  * interval = 0, 1 minute
+  * interval = 1, 1 hour
+  * interval = 2, 1 day
 
 
 ## License
