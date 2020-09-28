@@ -8,6 +8,9 @@ int answerType = 0;
 // answerType 0 for 1 minute, 1 for 1 hour, 2 for 1 day
 int intervalType = 0;
 
+// answerType 0 for only printing no, 1 for printing yes and no, 2 for 1 day
+int Type = -l
+
 // variables for time
 unsigned long previousMillis = 0;
 unsigned long currentMillis = 0;
