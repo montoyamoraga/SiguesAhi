@@ -2,14 +2,19 @@
 // started september 2020
 // by aaron montoya-moraga
 
+#include <SPI.h>;
+#include <WiFiNINA.h>;
+
+#include "internetLogin.h";
+
 // answerType 0 for beep, 1 for print, 2 for servo
 int answerType = 0;
 
 // answerType 0 for 1 minute, 1 for 1 hour, 2 for 1 day
 int intervalType = 0;
 
-// answerType 0 for only printing no, 1 for printing yes and no, 2 for 1 day
-int Type = -l
+// answerType 0 for only outputting no, 1 for outputting yes and no
+int outputType = 0;
 
 // variables for time
 unsigned long previousMillis = 0;
@@ -17,17 +22,18 @@ unsigned long currentMillis = 0;
 unsigned long interval = 0;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   if (intervalType == 0) {
-    interval = 1000 * 60;
+    // interval = 1000 * 60;
+    interval = 1000 * 20;
   } else if (intervalType == 1) {
     interval = 1000 * 60 * 60;
-    
+
   } else if (intervalType == 2) {
-    interval = 1000 * 60 * 60 * 24; 
+    interval = 1000 * 60 * 60 * 24;
   }
-  
+
 }
 
 void loop() {
