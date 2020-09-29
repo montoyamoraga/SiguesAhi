@@ -3,3 +3,6 @@
 
 # Python3
 env/
+
+# Arduino
+internetLogin.h
