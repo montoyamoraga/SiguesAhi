@@ -36,7 +36,23 @@ Add this code
 
 ## Do it yourself
 
+### Bill of materials
 
+
+Core materials:
+* Arduino Nano 33 IoT, $19.00 USD, available at [https://store.arduino.cc/usa/nano-33-iot]()
+
+Optional materials:
+* Mini thermal receipt printer starter pack, $61.95 USD, available at [https://www.adafruit.com/product/600]()
+* Piezo buzzer, $1.50 USD, available at [https://www.adafruit.com/product/160]()
+
+### Programming
+
+* Download the Arduino IDE
+* Add the following tools and libraries for the Arduino Nano 33 IoT
+
+
+### Installing
 
 
 You can change these variables:
@@ -56,7 +72,7 @@ This project was inspired by these artworks:
 
 * [Take a Bullet for This City](http://sites.bxmc.poly.edu/~lukedubois/projects/index.html?id=gun), [Luke Dubois](http://lukedubois.com/), 2014
 
-
+This project could not have been possible without the Wikipedia and Arduino projects.
 
 ## License
 
