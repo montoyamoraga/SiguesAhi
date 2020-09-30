@@ -15,7 +15,9 @@ This project is based on using a Arduino Nano 33 IOT.
 
 ## Software
 
-## Build your own
+## Documentation
+
+## Do it yourself
 
 You can change these variables:
 
@@ -31,7 +33,6 @@ You can change these variables:
 ## Inspiration
 
 This project was inspired by [Luke Dubois](http://lukedubois.com/)' [Take a Bullet for This City](http://sites.bxmc.poly.edu/~lukedubois/projects/index.html?id=gun) (2014)
-
 
 ## License
 
