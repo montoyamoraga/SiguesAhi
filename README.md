@@ -4,11 +4,12 @@
 
 "Are you still here?" is is a project by Aarón Montoya-Moraga, started in September 2020.
 
-This project is a digital instrument to check if institutions still exist, and signal when they don't anymore.
+This project is a digital instrument to check if institutions still exist, and alert when they don't anymore.
 
-This instrument connects to Wikipedia via internet, and checks if the corresponding article is in present or past tense, to determine if the institution exists or not. When the institution ceases to exist, the instrument signals with either beeping, motion, or text.
+This is accomplished by periodically visiting the Wikipedia article, and checking if the wording is in present or past tense. When it is determined that the instituion is no more, the instrument signals with beeping, text, or motion.
+ext.
 
-Instructions are included in this repository to build and program your own.
+In this repository you can find documentation on how it works and instructions to build your own version.
 
 ## The artwork
 
