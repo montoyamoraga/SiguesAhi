@@ -5,7 +5,7 @@
 
 // started in september 2020
 // alpha state
-//  it is working but it is messy
+// it is working but it is messy
 
 // instructions:
 // upload this code to a Arduino Nano 33 IoT
@@ -15,13 +15,14 @@
 #include <WiFiNINA.h>
 #include <ArduinoJson.h>
 
-// include information for internet login
+// include file for internet login
 #include "internetLogin.h"
 
-// your network ID
-char ssid[] = SECRET_SSID;        // your network SSID (name)
-char pass[] = SECRET_PASS;    // your network password (use for WPA, or use as key for WEP)
-int keyIndex = 0;            // your network key Index number (needed only for WEP)
+// read information from that file
+// ssid is network name
+char ssid[] = SECRET_SSID;
+// pass is network password (WPA)
+char pass[] = SECRET_PASS;
 
 int status = WL_IDLE_STATUS;
 char server[] = "en.wikipedia.org";
