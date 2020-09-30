@@ -10,9 +10,21 @@ This is a collection of three different sculptures.
 
 ## Hardware
 
-This project is based on using a Arduino Nano 33 IOT.
+This project is built on a Arduino Nano 33 IOT.
 
 ## Software
+
+The code included is for flashing the Arduino.
+
+create a file called internetLogin.h via the Arduino IDE.
+
+Add this code
+
+```h
+#define SECRET_SSID     "your_ssid"
+#define SECRET_PASS     "your_pass"
+```
+
 
 ## Documentation
 
