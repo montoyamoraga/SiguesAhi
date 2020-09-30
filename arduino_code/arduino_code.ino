@@ -1,83 +1,165 @@
+#include <SPI.h>
+#include <WiFiNINA.h>
+#include <ArduinoJson.h>
 
-// started september 2020
-// by aaron montoya-moraga
+#include "internetLogin.h"
+///////please enter your sensitive data in the Secret tab/arduino_secrets.h
+char ssid[] = SECRET_SSID;        // your network SSID (name)
+char pass[] = SECRET_PASS;    // your network password (use for WPA, or use as key for WEP)
+int keyIndex = 0;            // your network key Index number (needed only for WEP)
 
-#include <SPI.h>;
-#include <WiFiNINA.h>;
+int status = WL_IDLE_STATUS;
+char server[] = "en.wikipedia.org";    // name address for Google (using DNS)
 
-#include "internetLogin.h";
+// Initialize the Ethernet client library
+// with the IP address and port of the server
+// that you want to connect to (port 80 is default for HTTP):
+WiFiClient client;
 
-// answerType 0 for beep, 1 for print, 2 for servo
-int answerType = 0;
+String wikiPageId = "70101";
+String wikiExtract = "";
 
-// answerType 0 for 1 minute, 1 for 1 hour, 2 for 1 day
-int intervalType = 0;
+String wikiYesSingular = " is ";
+String wikiYesPlural = " are ";
+String wikiNoSingular = " was ";
+String wikiNoPlural = " were ";
 
-// answerType 0 for only outputting no, 1 for outputting yes and no
-int outputType = 0;
-
-// variables for time
-unsigned long previousMillis = 0;
-unsigned long currentMillis = 0;
-unsigned long interval = 0;
+boolean wikiStillExists = true;
 
 void setup() {
-  Serial.begin(115200);
+  //Initialize serial and wait for port to open:
+  Serial.begin(9600);
+  while (!Serial);
 
-  if (intervalType == 0) {
-    // interval = 1000 * 60;
-    interval = 1000 * 20;
-  } else if (intervalType == 1) {
-    interval = 1000 * 60 * 60;
-
-  } else if (intervalType == 2) {
-    interval = 1000 * 60 * 60 * 24;
+  // check for the WiFi module:
+  if (WiFi.status() == WL_NO_MODULE) {
+    Serial.println("Communication with WiFi module failed!");
+    // don't continue
+    while (true);
   }
+
+  String fv = WiFi.firmwareVersion();
+  if (fv < WIFI_FIRMWARE_LATEST_VERSION) {
+    Serial.println("Please upgrade the firmware");
+  }
+
+  // attempt to connect to Wifi network:
+  while (status != WL_CONNECTED) {
+    Serial.print("Attempting to connect to SSID: ");
+    Serial.println(ssid);
+    // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
+    status = WiFi.begin(ssid, pass);
+
+    // wait 10 seconds for connection:
+    delay(10000);
+  }
+  Serial.println("Connected to wifi");
+  printWifiStatus();
+
+  //  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=National_Rifle_Association&exchars=128"
+
+  Serial.println("\nStarting connection to server...");
+  // if you get a connection, report back via serial:
+  //  if (client.connect(server, 80)) {
+  if (client.connectSSL(server, 443)) {
+    Serial.println("connected to server");
+    // Make a HTTP request:
+    //    client.println("GET /search?q=arduino HTTP/1.1");
+    //    client.println("GET /w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=National_Rifle_Association&exchars=128 HTTP/1.0");
+    //    client.println("GET /w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&titles=National_Rifle_Association&exchars=128 HTTP/1.0");
+    client.println("GET /w/api.php?format=json&action=query&prop=extracts&explaintext&titles=National_Rifle_Association&exchars=128 HTTP/1.0");
+    client.println("Host: en.wikipedia.org");
+    client.println("Connection: close");
+    client.println();
+  }
+
+  //  check HTTP status
+  char status[32] = {0};
+  client.readBytesUntil('\r', status, sizeof(status));
+  // It should be "HTTP/1.0 200 OK" or "HTTP/1.1 200 OK"
+  if (strcmp(status + 9, "200 OK") != 0) {
+    Serial.print(F("Unexpected response: "));
+    Serial.println(status);
+    return;
+  }
+
+  // skip HTTP headers
+  char endOfHeaders[] = "\r\n\r\n";
+  if (!client.find(endOfHeaders)) {
+    Serial.println(F("Invalid response"));
+    return;
+  }
+
+  // allocate the json document
+  const size_t capacity = JSON_OBJECT_SIZE(3) + JSON_ARRAY_SIZE(2) + 500;
+  DynamicJsonDocument doc(capacity);
+
+  // Parse JSON object
+  DeserializationError error = deserializeJson(doc, client);
+
+  if (error) {
+    Serial.print(F("deserializeJson() failed: "));
+    Serial.println(error.c_str());
+    return;
+  }
+
+  // extract values
+  Serial.println(F("Response:"));
+  wikiExtract = doc["query"]["pages"][wikiPageId]["extract"].as<char*>();
+  Serial.println(wikiExtract);
+
+  for (int i = 0; i < wikiExtract.length() - wikiNoPlural.length(); i ++) {
+    if (wikiExtract.substring(i, i + wikiYesSingular.length()).equals(wikiYesSingular) || wikiExtract.substring(i, i + wikiYesPlural.length()).equals(wikiYesPlural)) {
+    }
+
+    if (wikiExtract.substring(i, i + wikiNoSingular.length()).equals(wikiNoSingular) || wikiExtract.substring(i, i + wikiNoPlural.length()).equals(wikiNoPlural)) {
+      wikiStillExists = true;
+    }
+  }
+
+  if (wikiStillExists) {
+    Serial.println("damn it still exists");
+  }
+  else {
+    Serial.println("oh great it does not exist anymore");
+  }
+
 
 }
 
 void loop() {
-
-  // update currentMillis to the current time
-  currentMillis = millis();
-
-  // check if time passed since
-  if (currentMillis - previousMillis >= interval) {
-
-    // update previousMillis to the current time
-    previousMillis = currentMillis;
-
-
-    Serial.println("hello world");
-
-    if (answerType == 0) {
-      answerBeep();
-    } else if (answerType == 1) {
-      answerPrint();
-    } else if (answerType == 2) {
-      answerServo();
-    }
-
-  }
-  // check if millis() did a a wrap around
-  else if (currentMillis - previousMillis < 0) {
-
-    // update previousMillis to the current time
-    previousMillis = currentMillis;
+  // if there are incoming bytes available
+  // from the server, read them and print them:
+  while (client.available()) {
+    char c = client.read();
+    Serial.write(c);
   }
 
+  // if the server's disconnected, stop the client:
+  if (!client.connected()) {
+    Serial.println();
+    Serial.println("disconnecting from server.");
+    client.stop();
+
+    // do nothing forevermore:
+    while (true);
+  }
 }
 
 
-void answerBeep() {
+void printWifiStatus() {
+  // print the SSID of the network you're attached to:
+  Serial.print("SSID: ");
+  Serial.println(WiFi.SSID());
 
-}
+  // print your board's IP address:
+  IPAddress ip = WiFi.localIP();
+  Serial.print("IP Address: ");
+  Serial.println(ip);
 
-
-void answerPrint() {
-
-}
-
-void answerServo() {
-
+  // print the received signal strength:
+  long rssi = WiFi.RSSI();
+  Serial.print("signal strength (RSSI):");
+  Serial.print(rssi);
+  Serial.println(" dBm");
 }
