@@ -1,8 +1,8 @@
-# TITLE TBD
+# are-you-still-here
 
 ## About
 
-This is a project by Aarón Montoya-Moraga.
+"Are you still here?" is is a project by Aarón Montoya-Moraga.
 
 ## The artwork
 
@@ -10,7 +10,7 @@ This is a collection of three different sculptures.
 
 ## Hardware
 
-This project is based on using a Arduino Nano 33 IOT, and three d
+This project is based on using a Arduino Nano 33 IOT.
 
 
 ## Software
@@ -20,7 +20,7 @@ This project is based on using a Arduino Nano 33 IOT, and three d
 You can change these variables:
 
 * answerType:
-  * answerType = 0,  beep
+  * answerType = 0, beep
   * answerType = 1, print
   * answerType = 2, servo
 * interval:
