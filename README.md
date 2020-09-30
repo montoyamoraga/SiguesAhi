@@ -8,7 +8,7 @@ This project is a digital instrument to check if institutions still exist, and a
 
 The instrument periodically pings Wikipedia, and checks if the article is written in present or past tense. When it changes to past tense, the institution is no more, and the instrument emits beeping, text, or motion.
 
-In this repository you can find documentation on how it works and instructions to build your own version.
+This repository includes the open source code, documentation about how it works, and instructions to build your own instrument.
 
 ## Instrument
 
