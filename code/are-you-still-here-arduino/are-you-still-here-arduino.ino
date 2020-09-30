@@ -67,19 +67,14 @@ void setup() {
     delay(10000);
   }
   Serial.println("Connected to wifi");
-  printWifiStatus();
 
   //  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=National_Rifle_Association&exchars=128"
 
   Serial.println("\nStarting connection to server...");
   // if you get a connection, report back via serial:
-  //  if (client.connect(server, 80)) {
   if (client.connectSSL(server, 443)) {
     Serial.println("connected to server");
     // Make a HTTP request:
-    //    client.println("GET /search?q=arduino HTTP/1.1");
-    //    client.println("GET /w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=National_Rifle_Association&exchars=128 HTTP/1.0");
-    //    client.println("GET /w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&titles=National_Rifle_Association&exchars=128 HTTP/1.0");
     client.println("GET /w/api.php?format=json&action=query&prop=extracts&explaintext&titles=National_Rifle_Association&exchars=128 HTTP/1.0");
     client.println("Host: en.wikipedia.org");
     client.println("Connection: close");
@@ -136,8 +131,6 @@ void setup() {
   else {
     Serial.println("oh great it does not exist anymore");
   }
-
-
 }
 
 void loop() {
@@ -157,22 +150,4 @@ void loop() {
     // do nothing forevermore:
     while (true);
   }
-}
-
-
-void printWifiStatus() {
-  // print the SSID of the network you're attached to:
-  Serial.print("SSID: ");
-  Serial.println(WiFi.SSID());
-
-  // print your board's IP address:
-  IPAddress ip = WiFi.localIP();
-  Serial.print("IP Address: ");
-  Serial.println(ip);
-
-  // print the received signal strength:
-  long rssi = WiFi.RSSI();
-  Serial.print("signal strength (RSSI):");
-  Serial.print(rssi);
-  Serial.println(" dBm");
 }
