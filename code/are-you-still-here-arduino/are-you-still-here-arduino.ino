@@ -15,8 +15,10 @@
 #include <WiFiNINA.h>
 #include <ArduinoJson.h>
 
+// include information for internet login
 #include "internetLogin.h"
-///////please enter your sensitive data in the Secret tab/arduino_secrets.h
+
+// your network ID
 char ssid[] = SECRET_SSID;        // your network SSID (name)
 char pass[] = SECRET_PASS;    // your network password (use for WPA, or use as key for WEP)
 int keyIndex = 0;            // your network key Index number (needed only for WEP)
