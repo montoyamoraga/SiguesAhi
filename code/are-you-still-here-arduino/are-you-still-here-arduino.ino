@@ -24,7 +24,7 @@ char pass[] = SECRET_PASS;    // your network password (use for WPA, or use as k
 int keyIndex = 0;            // your network key Index number (needed only for WEP)
 
 int status = WL_IDLE_STATUS;
-char server[] = "en.wikipedia.org";    // name address for Google (using DNS)
+char server[] = "en.wikipedia.org";
 
 // Initialize the Ethernet client library
 // with the IP address and port of the server
