@@ -12,7 +12,6 @@ This is a collection of three different sculptures.
 
 This project is based on using a Arduino Nano 33 IOT.
 
-
 ## Software
 
 ## Documentation
