@@ -1,3 +1,16 @@
+// are-you-still-here-arduino
+
+// a project by aaron montoya-moraga
+// github.com/montoyamoraga/are-you-still-here
+
+// started in september 2020
+// alpha state
+//  it is working but it is messy
+
+// instructions:
+// upload this code to a Arduino Nano 33 IoT
+
+// include libraries
 #include <SPI.h>
 #include <WiFiNINA.h>
 #include <ArduinoJson.h>
