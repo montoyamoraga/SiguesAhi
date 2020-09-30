@@ -2,7 +2,13 @@
 
 ## About
 
-"Are you still here?" is is a project by Aarón Montoya-Moraga.
+"Are you still here?" is is a project by Aarón Montoya-Moraga, started in September 2020.
+
+This project is a digital instrument to check if institutions still exist, and signal when they don't anymore.
+
+This instrument connects to Wikipedia via internet, and checks if the corresponding article is in present or past tense, to determine if the institution exists or not. When the institution ceases to exist, the instrument signals with either beeping, motion, or text.
+
+Instructions are included in this repository to build and program your own.
 
 ## The artwork
 
