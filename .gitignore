@@ -5,4 +5,5 @@
 env/
 
 # Arduino
-*/internetLogin.h
+# ignore the file internetLogin.h in any subfolder
+**/internetLogin.h
