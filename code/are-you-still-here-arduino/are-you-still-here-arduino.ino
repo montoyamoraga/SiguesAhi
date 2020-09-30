@@ -20,9 +20,9 @@
 
 // read information from that file
 // ssid is network name
-char ssid[] = SECRET_SSID;
+char ssid[] = NETWORK_NAME;
 // pass is network password (WPA)
-char pass[] = SECRET_PASS;
+char pass[] = NETWORK_PASS;
 
 int status = WL_IDLE_STATUS;
 char server[] = "en.wikipedia.org";

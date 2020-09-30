@@ -21,8 +21,8 @@ create a file called internetLogin.h via the Arduino IDE.
 Add this code
 
 ```h
-#define SECRET_SSID     "your_ssid"
-#define SECRET_PASS     "your_pass"
+#define NETWORK_NAME     "yourNetworkName"
+#define NETWORK_PASS     "yourNetworkPass"
 ```
 
 
