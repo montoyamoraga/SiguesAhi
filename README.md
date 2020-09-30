@@ -36,6 +36,9 @@ Add this code
 
 ## Do it yourself
 
+
+
+
 You can change these variables:
 
 * answerType:
@@ -47,9 +50,13 @@ You can change these variables:
   * interval = 1, 1 hour
   * interval = 2, 1 day
 
-## Inspiration
+## Acknowledgements
 
-This project was inspired by [Luke Dubois](http://lukedubois.com/)' [Take a Bullet for This City](http://sites.bxmc.poly.edu/~lukedubois/projects/index.html?id=gun) (2014)
+This project was inspired by these artworks:
+
+* [Take a Bullet for This City](http://sites.bxmc.poly.edu/~lukedubois/projects/index.html?id=gun), [Luke Dubois](http://lukedubois.com/), 2014
+
+
 
 ## License
 
