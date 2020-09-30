@@ -2,7 +2,7 @@
 
 ## About
 
-"Are you still here?" is is a project by Aarón Montoya-Moraga, started in September 2020.
+"Are you still here?" is an open source project by Aarón Montoya-Moraga, started in September 2020.
 
 This project is a digital instrument to check if institutions still exist, and alert when they don't anymore.
 
@@ -10,7 +10,7 @@ The instrument periodically pings Wikipedia, and checks if the article is writte
 
 In this repository you can find documentation on how it works and instructions to build your own version.
 
-## The artwork
+## Instrument
 
 This is a collection of three different sculptures.
 
@@ -70,6 +70,7 @@ You can change these variables:
 
 This project was inspired by these artworks:
 
+* [@grow_slow](https://github.com/nicolehe/grow_slow), [Nicole He](http://nicole.pizza/), 2016
 * [Take a Bullet for This City](http://sites.bxmc.poly.edu/~lukedubois/projects/index.html?id=gun), [Luke Dubois](http://lukedubois.com/), 2014
 
 This project could not have been possible without the Wikipedia and Arduino projects.
