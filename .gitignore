@@ -1,13 +1,13 @@
 # Apple
 .DS_Store
 
-# Visual Studio Code
-.vscode/
+# Arduino
+# ignore the file internetLogin.h in any subfolder
+**/internetLogin.h
 
 # Python3
 # ignore virtual environment
 **/env/
 
-# Arduino
-# ignore the file internetLogin.h in any subfolder
-**/internetLogin.h
+# Visual Studio Code
+.vscode/
