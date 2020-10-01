@@ -1,0 +1,4 @@
+# requirements for are-you-still-here.py
+
+# requests module
+requests
