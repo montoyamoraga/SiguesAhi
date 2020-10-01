@@ -3,7 +3,7 @@
 
 # Arduino
 # ignore the file internetLogin.h in any subfolder
-**/internetLogin.h
+**/internet_login.h
 
 # Python3
 # ignore virtual environment
