@@ -1,6 +1,9 @@
 # Apple
 .DS_Store
 
+# Visual Studio Code
+.vscode/
+
 # Python3
 # ignore virtual environment
 **/env/
