@@ -1,4 +1,16 @@
-# libraries
+# are-you-still-here-python
+
+# a project by aaron montoya-moraga
+# github.com/montoyamoraga/are-you-still-here
+
+# started in september 2020
+# alpha state
+# it is working but it is messy
+
+# instructions:
+# run on terminal
+
+# import libraries
 import requests
 import json
 import os
@@ -6,7 +18,9 @@ import os
 # clear screen
 os.system('cls' if os.name == 'nt' else 'clear')
 
-urlFull = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=National_Rifle_Association&exchars=128"
+# urlFull = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=National_Rifle_Association&exchars=128"
+
+urlFull = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&explaintext&titles=National_Rifle_Association&exchars=128"
 
 x = requests.get(urlFull)
 
