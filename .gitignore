@@ -2,7 +2,7 @@
 .DS_Store
 
 # Python3
-env/
+**/env/
 
 # Arduino
 # ignore the file internetLogin.h in any subfolder
