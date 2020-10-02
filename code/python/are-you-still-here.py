@@ -68,14 +68,11 @@ userExistNegative = "it is no more"
 # setup initial state
 #####################
 
-# clear terminal screen
-os.system('cls' if os.name == 'nt' else 'clear')
-
 # API request to Wikipedia
 # request the first 128 characters of the first paragraph
 urlFull = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&explaintext&exchars=128&titles=" + userOrganization
 
-# do the request
+# do the request and store the result
 result = requests.get(urlFull)
 
 # words to check if organization still exists or not
