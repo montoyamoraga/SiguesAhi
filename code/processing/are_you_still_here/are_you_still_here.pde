@@ -1,10 +1,21 @@
-// are_you_still_here_processing
-// by aaron montoya-moraga
-// september 2020
-// programmed on processing 3
+////////
+// about
+////////
 
-// this code is used to render the graphic identity
-// for the github repository
+// are you still here?
+// a project by aaron montoya-moraga
+// available at 
+// github.com/montoyamoraga/are-you-still-here
+
+// are_you_still_here.pde
+// this is a Processing sketch for graphic identity
+// started in september 2020
+// modified in october 2020
+// v0.0.1
+
+///////
+// code
+///////
 
 // global variable for storing font
 PFont myFont;

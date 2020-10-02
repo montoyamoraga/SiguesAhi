@@ -1,22 +1,47 @@
-// are-you-still-here-arduino
+////////
+// about
+////////
 
+// are you still here?
 // a project by aaron montoya-moraga
+// available at
 // github.com/montoyamoraga/are-you-still-here
 
+// this is the microcontroller Arduino flavor
 // started in september 2020
-// alpha state
-// it is working but it is messy
+// modified in october 2020
+// v0.0.1
 
-// instructions:
-// upload this code to a Arduino Nano 33 IoT
+///////////////
+// instructions
+///////////////
 
-// include libraries
+// 0. install on your computer the Arduino IDE + libraries
+// 1. check if your Arduino needs a firmware upgrade
+// 2. modify in this script the user defined variables
+// 3. upload this script to an Arduino (Nano 33 IoT) with internet connection
+
+///////////
+// comments
+///////////
+
+// 0. this currently works only on WAP networks, not WEP yet
+// 1. programmed to use HTTPS protocol, not HTTP
+
+///////////////////
+// import libraries
+///////////////////
+
 #include <SPI.h>
 #include <WiFiNINA.h>
 #include <ArduinoJson.h>
 
+////////////////////////
+// import external files
+////////////////////////
+
 // include file for internet login
-#include "internetLogin.h"
+#include "internet_login.h"
 
 // read information from that file
 // ssid is network name
@@ -24,74 +49,68 @@ char ssid[] = NETWORK_NAME;
 // pass is network password (WPA)
 char pass[] = NETWORK_PASS;
 
+/////////////////////////
+// user defined variables
+/////////////////////////
+
+String userOrganization = "National_Rifle_Association";
+String userWikiPageId = "70101";
+
+// messages of existence
+String userExistPositive = "it is still here";
+String userExistNegative = "it is no more";
+
+
+//////////////////////
+// setup initial state
+//////////////////////
+
+WiFiClient client;
+
 int status = WL_IDLE_STATUS;
 char server[] = "en.wikipedia.org";
 
-// Initialize the Ethernet client library
-// with the IP address and port of the server
-// that you want to connect to (port 80 is default for HTTP):
-WiFiClient client;
-
-String wikiPageId = "70101";
 String wikiExtract = "";
 
-String wikiYesSingular = " is ";
-String wikiYesPlural = " are ";
-String wikiNoSingular = " was ";
-String wikiNoPlural = " were ";
+char wordsExistYes[][] = {" is ", " are "};
+char wordsExistNo[][] = {" was ", " were "};
 
 boolean wikiStillExists = true;
 
+// setup() happens once at the beginning
 void setup() {
-  //Initialize serial and wait for port to open:
+
+  // initialize serial communication
   Serial.begin(9600);
+
+  // wait for port to open
   while (!Serial);
 
-  // check for the WiFi module:
+  // check for the WiFi module
   if (WiFi.status() == WL_NO_MODULE) {
     Serial.println("Communication with WiFi module failed!");
     // don't continue
     while (true);
   }
 
-  String fv = WiFi.firmwareVersion();
-  if (fv < WIFI_FIRMWARE_LATEST_VERSION) {
-    Serial.println("Please upgrade the firmware");
-  }
-
-  // attempt to connect to Wifi network:
+  // attempt to connect to internet
   while (status != WL_CONNECTED) {
-    Serial.print("Attempting to connect to SSID: ");
-    Serial.println(ssid);
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
     status = WiFi.begin(ssid, pass);
 
-    // wait 10 seconds for connection:
+    // wait 10 seconds for connection
     delay(10000);
   }
   Serial.println("Connected to wifi");
 
-  //  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=National_Rifle_Association&exchars=128"
-
-  Serial.println("\nStarting connection to server...");
   // if you get a connection, report back via serial:
   if (client.connectSSL(server, 443)) {
     Serial.println("connected to server");
     // Make a HTTP request:
-    client.println("GET /w/api.php?format=json&action=query&prop=extracts&explaintext&titles=National_Rifle_Association&exchars=128 HTTP/1.0");
+    client.println("GET /w/api.php?format=json&action=query&prop=extracts&explaintext&exchars=128&titles=" + userOrganization + " HTTP/1.0");
     client.println("Host: en.wikipedia.org");
     client.println("Connection: close");
     client.println();
-  }
-
-  //  check HTTP status
-  char status[32] = {0};
-  client.readBytesUntil('\r', status, sizeof(status));
-  // It should be "HTTP/1.0 200 OK" or "HTTP/1.1 200 OK"
-  if (strcmp(status + 9, "200 OK") != 0) {
-    Serial.print(F("Unexpected response: "));
-    Serial.println(status);
-    return;
   }
 
   // skip HTTP headers
@@ -102,7 +121,8 @@ void setup() {
   }
 
   // allocate the json document
-  const size_t capacity = JSON_OBJECT_SIZE(3) + JSON_ARRAY_SIZE(2) + 500;
+  // calculated from https://arduinojson.org/v6/assistant/
+  const size_t capacity = JSON_ARRAY_SIZE(1) + JSON_OBJECT_SIZE(1) + 3 * JSON_OBJECT_SIZE(2) + JSON_OBJECT_SIZE(4) + 292;
   DynamicJsonDocument doc(capacity);
 
   // Parse JSON object
@@ -116,41 +136,54 @@ void setup() {
 
   // extract values
   Serial.println(F("Response:"));
-  wikiExtract = doc["query"]["pages"][wikiPageId]["extract"].as<char*>();
+  wikiExtract = doc["query"]["pages"][userWikiPageId]["extract"].as<char*>();
   Serial.println(wikiExtract);
 
-  for (int i = 0; i < wikiExtract.length() - wikiNoPlural.length(); i ++) {
-    if (wikiExtract.substring(i, i + wikiYesSingular.length()).equals(wikiYesSingular) || wikiExtract.substring(i, i + wikiYesPlural.length()).equals(wikiYesPlural)) {
-    }
-
-    if (wikiExtract.substring(i, i + wikiNoSingular.length()).equals(wikiNoSingular) || wikiExtract.substring(i, i + wikiNoPlural.length()).equals(wikiNoPlural)) {
-      wikiStillExists = true;
-    }
+  for (int index; index < sizeof(wordsExistNo); index++) {
+    Serial.println(String(sizeof(wordsExistNo)));
+    //    Serial.println(wordsExistNo[index]);
   }
+
+
+  //  for (int i = 0; i < wikiExtract.length() - wikiNoPlural.length(); i ++) {
+  //    if (wikiExtract.substring(i, i + wikiYesSingular.length()).equals(wikiYesSingular) || wikiExtract.substring(i, i + wikiYesPlural.length()).equals(wikiYesPlural)) {
+  //    }
+  //
+  //    if (wikiExtract.substring(i, i + wikiNoSingular.length()).equals(wikiNoSingular) || wikiExtract.substring(i, i + wikiNoPlural.length()).equals(wikiNoPlural)) {
+  //      wikiStillExists = true;
+  //    }
+  //  }
 
   if (wikiStillExists) {
-    Serial.println("damn it still exists");
+    Serial.println(userExistPositive);
   }
   else {
-    Serial.println("oh great it does not exist anymore");
+    Serial.println(userExistNegative);
   }
 }
 
+// loop() happens after setup(), and it repeats
 void loop() {
-  // if there are incoming bytes available
-  // from the server, read them and print them:
+
+  // check for availability of incoming bytes
   while (client.available()) {
-    char c = client.read();
-    Serial.write(c);
+    // read the byte
+    char newChar = client.read();
+    // print the byte
+    Serial.write(newChar);
   }
 
-  // if the server's disconnected, stop the client:
+  // if the server is disconnected
   if (!client.connected()) {
-    Serial.println();
+
+    // print a warning
     Serial.println("disconnecting from server.");
+
+    // stop the client
     client.stop();
 
-    // do nothing forevermore:
+    // infinite loop to stop execution
     while (true);
+
   }
 }

@@ -1,18 +1,32 @@
-# are-you-still-here-python
+#######
+# about
+#######
 
+# are you still here?
 # a project by aaron montoya-moraga
+# available at 
 # github.com/montoyamoraga/are-you-still-here
 
+# are-you-still-here.py
+# this is the desktop Python flavor
 # started in september 2020
-# this is the Python flavor of this project
+# modified in october 2020
 # v0.0.1
 
-# instructions:
-# 0. install script requirements
-# 1. select dif 
-# 2. run this script on a computer with internet connection
+##############
+# instructions
+##############
 
-# import included Python modules
+# 0. install script requirements
+# 1. upgrade your Python installation if needed
+# 2. modify in this script the user defined variables
+# 3. run this script on a computer with internet connection
+
+################
+# import modules
+################
+
+# import Python modules
 import os
 import json
 import time
@@ -21,7 +35,9 @@ import datetime
 # import Python modules that need installation
 import requests
 
-# variables defined by user
+########################
+# user defined variables
+########################
 
 # name of organization
 # replace with the institution you want
@@ -44,6 +60,14 @@ userPrintTimeStamp = True;
 # True: script prints
 userPrintPositive = True;
 
+# messages of existence
+userExistPositive = "it is still here"
+userExistNegative = "it is no more"
+
+#####################
+# setup initial state
+#####################
+
 # clear terminal screen
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -64,7 +88,10 @@ wordsExistNo = [" was ", " were "]
 # default value is True
 stillExists = True
 
+###############
 # infinite loop
+###############
+
 while True:
 
   # iterate over every character in the wikipedia article
@@ -77,21 +104,23 @@ while True:
             # if it does, declare the non existence of the institution
             stillExists = False
 
-  # print the existence or non existence of the institution
-  if stillExists:
-    
-    if userPrintPositive:
-      # check if the user wants the time stamp
-      if userPrintTimeStamp:
-        # print the timestamp, omit newline character
-        print(datetime.datetime.now().isoformat(timespec="seconds"), end=" ")
-      print("it is still here")
+  # retrieve timestamp
+  if userPrintTimeStamp:
+    # if user wants a timestamp, calculate it
+    timeStamp = datetime.datetime.now().isoformat(timespec="seconds") + " "
   else:
-      # check if the user wants the time stamp
-      if userPrintTimeStamp:
-        # print the timestamp, omit newline character
-        print(datetime.datetime.now().isoformat(timespec="seconds"), end=" ")
-      print("it is no more")
+    # if user wants no timestamp, it is empty
+    timeStamp = ""
 
-  # wait for one cycle
+  # if the institution still exists
+  if stillExists:
+    # print positive existence to terminal
+    print(timeStamp + userExistPositive)
+  
+  # if the institution is no more
+  else:
+    # print negative existence to terminal
+    print(timeStamp + currentuserExistNegative)
+
+  # sleep for one cycle
   time.sleep(userInterval)
