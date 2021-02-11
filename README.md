@@ -1,8 +1,8 @@
-# are-you-still-here
+# sigues-ahi
 
 ## About
 
-"Are you still here?" is an open source project by Aarón Montoya-Moraga, started in September 2020.
+"sigues ahí?" is an open source project by Aarón Montoya-Moraga, started in September 2020.
 
 This project is a digital instrument to check if institutions still exist, and alert when they don't anymore.
 
@@ -11,8 +11,6 @@ The instrument periodically pings Wikipedia, and checks if the article is writte
 This repository includes the open source code, documentation about how it works, and instructions to build your own instrument.
 
 ## Instrument
-
-
 
 This is a collection of three different sculptures.
 
@@ -33,7 +31,6 @@ Add this code
 #define NETWORK_PASS     "yourNetworkPass"
 ```
 
-
 ## Documentation
 
 ## Do it yourself
@@ -53,9 +50,7 @@ Optional materials:
 * Download the Arduino IDE
 * Add the following tools and libraries for the Arduino Nano 33 IoT
 
-
 ### Installing
-
 
 You can change these variables:
 
