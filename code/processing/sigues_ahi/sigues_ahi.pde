@@ -2,16 +2,16 @@
 // about
 ////////
 
-// are you still here?
+// sigues ahi?
 // a project by aaron montoya-moraga
 // available at 
-// github.com/montoyamoraga/are-you-still-here
+// github.com/montoyamoraga/sigues-ahi
 
-// are_you_still_here.pde
+// sigues_ahi.pde
 // this is a Processing sketch for graphic identity
 // started in september 2020
-// modified in october 2020
-// v0.0.1
+// modified in Februar 2021
+// v0.0.2
 
 ///////
 // code
@@ -37,7 +37,7 @@ void setup() {
   // align to center
   textAlign(CENTER);
   // text size
-  textSize(64);
+  textSize(128);
 
   // drawing options
   // no border
@@ -49,7 +49,7 @@ void setup() {
   background(0);
 
   // draw text at the center of canvas
-  text("are you still here?", width/2, height/2);
+  text("sigues ahí?", width/2, height/2);
 
   // save resulting file
   save("output.jpg");
