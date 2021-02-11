@@ -1,4 +1,4 @@
-# requirements for are-you-still-here.py
+# requirements for sigues-ahi.py
 
 # requests module
 requests

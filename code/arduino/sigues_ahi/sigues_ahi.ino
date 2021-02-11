@@ -1,7 +1,7 @@
-// are-you-still-here-arduino
+// sigues-ahi
 
 // a project by aaron montoya-moraga
-// github.com/montoyamoraga/are-you-still-here
+// github.com/montoyamoraga/sigues-ahi
 
 // started in september 2020
 // alpha state
