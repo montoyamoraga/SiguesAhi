@@ -19,13 +19,18 @@
 
 class SiguesAhi {
 public:
+
   // constructor
   SiguesAhi();
+  
+  // other functions
+  void setup();
 
 protected:
   String wikiPageID;
   boolean wikiStillExists = true;
-}
+
+};
 
 // conditional compilation
 #endif

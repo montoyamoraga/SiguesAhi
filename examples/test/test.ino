@@ -1,10 +1,10 @@
 #include <SiguesAhi.h>
 
-// instance of class
-SiguesAhi sigues;
-
 // include file for internet login
 #include "secret.h"
+
+// instance of class
+SiguesAhi sigues;
 
 // read information from that file
 // ssid is network name
@@ -31,9 +31,9 @@ String wikiNoPlural = " were ";
 boolean wikiStillExists = true;
 
 void setup() {
+  
   //Initialize serial and wait for port to open:
-  Serial.begin(9600);
-  while (!Serial);
+  serial.setup();
 
   // check for the WiFi module:
   if (WiFi.status() == WL_NO_MODULE) {
