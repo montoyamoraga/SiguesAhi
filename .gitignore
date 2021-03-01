@@ -2,8 +2,8 @@
 .DS_Store
 
 # Arduino
-# ignore the file internetLogin.h in any subfolder
-**/internet_login.h
+# ignore the file secret.h in any subfolder
+**/secret.h
 
 # Python3
 # ignore virtual environment
