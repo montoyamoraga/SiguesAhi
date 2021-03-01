@@ -1,10 +1,10 @@
 #include <SiguesAhi.h>
 
-// instructions:
-// upload this code to a Arduino Nano 33 IoT
+// instance of class
+SiguesAhi sigues;
 
 // include file for internet login
-#include "internet_login.h"
+#include "secret.h"
 
 // read information from that file
 // ssid is network name
