@@ -117,7 +117,7 @@ void setup() {
   }
 
   if (sigues.wikiStillExists) {
-    Serial.println("damn it still exists");
+    Serial.println("oh no it still exists");
   }
   else {
     Serial.println("oh great it does not exist anymore");
