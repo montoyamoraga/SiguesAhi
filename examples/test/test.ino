@@ -33,7 +33,7 @@ boolean wikiStillExists = true;
 void setup() {
   
   //Initialize serial and wait for port to open:
-  serial.setup();
+  sigues.setup();
 
   // check for the WiFi module:
   if (WiFi.status() == WL_NO_MODULE) {
