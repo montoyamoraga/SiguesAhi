@@ -21,6 +21,10 @@ class SiguesAhi {
 public:
   // constructor
   SiguesAhi();
+
+protected:
+  String wikiPageID;
+  boolean wikiStillExists = true;
 }
 
 // conditional compilation
