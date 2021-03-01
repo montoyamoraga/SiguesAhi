@@ -1,4 +1,0 @@
-# requirements for sigues-ahi.py
-
-# requests module
-requests
