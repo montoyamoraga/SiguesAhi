@@ -24,11 +24,16 @@ public:
   SiguesAhi();
   
   // other functions
-  void setup();
+  void initialize();
+
+  void setPageID(int newID);
+  String getPageID();
+
+  // TODO: add API so that this variable can be protected
+  boolean wikiStillExists = true;
 
 protected:
   String wikiPageID;
-  boolean wikiStillExists = true;
 
 };
 

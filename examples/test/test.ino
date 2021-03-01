@@ -20,7 +20,6 @@ char server[] = "en.wikipedia.org";
 // that you want to connect to (port 80 is default for HTTP):
 WiFiClient client;
 
-String wikiPageId = "70101";
 String wikiExtract = "";
 
 String wikiYesSingular = " is ";
@@ -28,12 +27,13 @@ String wikiYesPlural = " are ";
 String wikiNoSingular = " was ";
 String wikiNoPlural = " were ";
 
-boolean wikiStillExists = true;
-
 void setup() {
   
   //Initialize serial and wait for port to open:
-  sigues.setup();
+  sigues.initialize();
+
+  // TODO: add explanation of example
+  sigues.setPageID(70101);
 
   // check for the WiFi module:
   if (WiFi.status() == WL_NO_MODULE) {
@@ -104,7 +104,7 @@ void setup() {
 
   // extract values
   Serial.println(F("Response:"));
-  wikiExtract = doc["query"]["pages"][wikiPageId]["extract"].as<char*>();
+  wikiExtract = doc["query"]["pages"][sigues.getPageID()]["extract"].as<char*>();
   Serial.println(wikiExtract);
 
   for (int i = 0; i < wikiExtract.length() - wikiNoPlural.length(); i ++) {
@@ -112,11 +112,11 @@ void setup() {
     }
 
     if (wikiExtract.substring(i, i + wikiNoSingular.length()).equals(wikiNoSingular) || wikiExtract.substring(i, i + wikiNoPlural.length()).equals(wikiNoPlural)) {
-      wikiStillExists = true;
+      sigues.wikiStillExists = true;
     }
   }
 
-  if (wikiStillExists) {
+  if (sigues.wikiStillExists) {
     Serial.println("damn it still exists");
   }
   else {

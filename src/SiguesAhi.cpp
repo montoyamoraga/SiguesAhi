@@ -2,11 +2,19 @@
 #include "SiguesAhi.h"
 
 SiguesAhi::SiguesAhi() {
-  wikiPageID = 7001;
+  // TODO: add here
 }
 
-void SiguesAhi::setup() {
+void SiguesAhi::initialize() {
   Serial.begin(9600);
   while (!Serial);
   Serial.println("hey what up");
+}
+
+void SiguesAhi::setPageID(int newID) {
+  wikiPageID = String(newID);
+}
+
+String SiguesAhi::getPageID() {
+  return wikiPageID;
 }
