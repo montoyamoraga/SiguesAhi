@@ -22,7 +22,7 @@ This project is built on a Arduino Nano 33 IOT.
 
 The code included is for flashing the Arduino.
 
-create a file called internetLogin.h via the Arduino IDE.
+create a file called secret.h via the Arduino IDE.
 
 Add this code
 
