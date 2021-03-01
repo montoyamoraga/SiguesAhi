@@ -12,9 +12,16 @@
 #define SIGUES_AHI_H
 
 // include libraries
+#include <Arduino.h>
+#include <ArduinoJson.h>
 #include <SPI.h>
 #include <WiFiNINA.h>
-#include <ArduinoJson.h>
+
+class SiguesAhi {
+public:
+  // constructor
+  SiguesAhi();
+}
 
 // conditional compilation
 #endif
