@@ -8,15 +8,17 @@
 SiguesAhi sigues;
 
 // variables to be set by user
-// 16779: KKK, 70101: NRA
-int myPageID = 70101;
+String myWikiPageTitle = "National_Rifle_Association";
+// 70101: NRA
+int myWikiPageID = 70101;
 
 void setup() {
 
   // initialize serial and wait for port to open
   // argument are NETWORK_NAME and NETWORK_PASS, from secret.h
-  // and page ID, provided by variable
-  sigues.initialize(NETWORK_NAME, NETWORK_PASS, myPageID);
+  sigues.setNetwork(NETWORK_NAME, NETWORK_PASS);
+
+  sigues.setWiki(myWikiPageTitle, myWikiPageID);
 
   // TODO: document
   sigues.connectingSSL();

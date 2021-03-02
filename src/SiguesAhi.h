@@ -21,11 +21,17 @@ public:
   SiguesAhi();
 
   // other functions
-  void initialize(String newNetworkName, String newNetworkPass, int newPageID);
+  void setNetwork(String newNetworkName, String newNetworkPass);
 
-  void setPageID(int newPageID);
+  void setWiki(String newWikiPageTitle, int newWikiPageID);
 
-  String getPageID();
+  void setWikiPageTitle(String newWikiPageTitle);
+  String getWikiPageTitle();
+
+  void setWikiPageID(int newWikiPageID);
+  String getWikiPageID();
+
+  void setWikiRequest(String newWikiTitle);
 
   void setDebuggingMode(bool newState);
 
@@ -63,10 +69,15 @@ public:
   String wikiNoPlural = " were ";
 
 protected:
-  String wikiPageID;
+  // debugging variables
   bool debuggingMode = false;
+  // network variables
   String ssid;
   String pass;
+  // wikipedia variables
+  String wikiPageTitle;
+  String wikiPageID;
+  String wikiRequest;
 };
 
 // conditional compilation

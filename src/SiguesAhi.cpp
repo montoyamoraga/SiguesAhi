@@ -5,20 +5,21 @@
 
 char server[] = "en.wikipedia.org";
 
+String wikiTitle = "National_Rifle_Association";
+
 // TODO: maybe this can be deleted?
 int status = WL_IDLE_STATUS;
 
 SiguesAhi::SiguesAhi() {}
 
-void SiguesAhi::initialize(String newNetworkName, String newNetworkPass,
-                           int newPageID) {
-  // open serial port
-  Serial.begin(9600);
-  while (!Serial)
-    ;
-  // set new page ID
+void SiguesAhi::setNetwork(String newNetworkName, String newNetworkPass) {
 
-  setPageID(newPageID);
+  if (debuggingMode) {
+    // open serial port
+    Serial.begin(9600);
+    while (!Serial)
+      ;
+  }
 
   ssid = newNetworkName;
   pass = newNetworkPass;
@@ -33,12 +34,16 @@ void SiguesAhi::initialize(String newNetworkName, String newNetworkPass,
   connectInternet();
 }
 
-void SiguesAhi::setPageID(int newPageID) {
-  // set internal variable
-  wikiPageID = String(newPageID);
+void SiguesAhi::setWiki(String newWikiPageTitle, int newWikiPageID) {
+  setWikiPageTitle(newWikiPageTitle);
 }
 
-String SiguesAhi::getPageID() {
+void SiguesAhi::setWikiPageID(int newWikiPageID) {
+  // set internal variable
+  wikiPageID = String(newWikiPageID);
+}
+
+String SiguesAhi::getWikiPageID() {
   // return String
   return wikiPageID;
 }
@@ -47,17 +52,39 @@ void SiguesAhi::setDebuggingMode(bool newState) {
   // set debuggingMode
   debuggingMode = newState;
 }
-//  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=National_Rifle_Association&exchars=128"
+
+String SiguesAhi::getWikiPageTitle() {
+  // return String
+  return wikiTitle;
+}
+
+void SiguesAhi::setWikiPageTitle(String newWikiPageTitle) {
+  wikiPageTitle = newWikiPageTitle;
+}
+
+void SiguesAhi::setWikiRequest(String newWikiPageTitle) {
+
+  String wikiRequestPrefix = "GET "
+                             "/w/"
+                             "api.php?format=json&action=query&prop=extracts&"
+                             "explaintext&exchars=128&titles=";
+  String wikiRequestSuffix = " HTTP/1.0";
+
+  wikiRequest = wikiRequestPrefix + newWikiPageTitle + wikiRequestSuffix;
+}
+
+// https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&explaintext&exchars=128&titles=National_Rifle_Association
+void setWikiRequest(String newWikiTitle);
 
 // TODO: make it depend on variables
 void SiguesAhi::connectingSSL() {
+
+  // connect through port 443
   if (client.connectSSL(server, 443)) {
+
     Serial.println("connected to server");
-    // Make a HTTP request:
-    client.println("GET "
-                   "/w/"
-                   "api.php?format=json&action=query&prop=extracts&explaintext&"
-                   "titles=National_Rifle_Association&exchars=128 HTTP/1.0");
+
+    client.println(wikiRequest);
     client.println("Host: en.wikipedia.org");
     client.println("Connection: close");
     client.println();
@@ -101,7 +128,7 @@ void SiguesAhi::parseJSON() {
 
   // extract values
   Serial.println(F("Response:"));
-  wikiExtract = doc["query"]["pages"][getPageID()]["extract"].as<char *>();
+  wikiExtract = doc["query"]["pages"][getWikiPageID()]["extract"].as<char *>();
   Serial.println(wikiExtract);
 
   for (int i = 0; i < wikiExtract.length() - wikiNoPlural.length(); i++) {
@@ -152,7 +179,6 @@ void SiguesAhi::checkFirmware() {
   String fv = WiFi.firmwareVersion();
   if (fv < WIFI_FIRMWARE_LATEST_VERSION) {
     Serial.println("optional: upgrade firmware with WiFiNINA library");
-
   }
 }
 
@@ -177,5 +203,5 @@ void SiguesAhi::connectInternet() {
     // wait 10 seconds for connection:
     delay(10000);
   }
-  Serial.println("Connected to wifi");
+  Serial.println("connected to wifi");
 }
