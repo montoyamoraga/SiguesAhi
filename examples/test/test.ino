@@ -13,15 +13,15 @@ SiguesAhi sigues;
 int myPageID = 70101;
 
 // read information from that file
-char ssid[] = NETWORK_NAME;
+// char ssid[] = NETWORK_NAME;
 // pass is network password (WPA)
-char pass[] = NETWORK_PASS;
+// char pass[] = NETWORK_PASS;
 
 void setup() {
 
   // initialize serial and wait for port to open
   // argument is page ID
-  sigues.initialize(myPageID);
+  sigues.initialize(NETWORK_NAME, NETWORK_PASS, myPageID);
 
   //  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=National_Rifle_Association&exchars=128"
 

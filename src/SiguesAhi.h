@@ -24,7 +24,7 @@ public:
   SiguesAhi();
 
   // other functions
-  void initialize(int newPageID);
+  void initialize(String newNetworkName, String newNetworkPass, int newPageID);
 
   void setPageID(int newPageID);
 
@@ -71,6 +71,8 @@ public:
 protected:
   String wikiPageID;
   bool debuggingMode = false;
+  String ssid;
+  String pass;
 };
 
 // conditional compilation

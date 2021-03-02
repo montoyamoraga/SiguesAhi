@@ -8,7 +8,7 @@ int status = WL_IDLE_STATUS;
 
 SiguesAhi::SiguesAhi() {}
 
-void SiguesAhi::initialize(int newPageID) {
+void SiguesAhi::initialize(String newNetworkName, String newNetworkPass, int newPageID) {
   // open serial port
   Serial.begin(9600);
   while (!Serial)
@@ -16,6 +16,9 @@ void SiguesAhi::initialize(int newPageID) {
   // set new page ID
 
   setPageID(newPageID);
+
+  ssid = newNetworkName;
+  pass = newNetworkPass;
 
   // hardware check
   checkWifiModule();
@@ -151,11 +154,20 @@ void SiguesAhi::checkFirmware() {
 void SiguesAhi::connectInternet() {
   // attempt to connect to Wifi network:
   while (status != WL_CONNECTED) {
-    Serial.print("trying to connect to");
+    Serial.print("trying to connect to: ");
     Serial.println(ssid);
-    // Connect to WPA/WPA2 network. Change this line if using open or WEP
-    // network:
-    status = WiFi.begin(ssid, pass);
+    
+    // conversion from string to char array
+    // first initialize the arrays with the length
+    char ssidCharArray[ssid.length() + 1];
+    char passCharArray[pass.length() + 1];
+
+    // then use function to populate them
+    ssid.toCharArray(ssidCharArray, ssid.length()+1);
+    pass.toCharArray(passCharArray, pass.length()+1);
+
+    // Connect to WPA/WPA2. Modify if using open or WEP
+    status = WiFi.begin(ssidCharArray, passCharArray);
 
     // wait 10 seconds for connection:
     delay(10000);
