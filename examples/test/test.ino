@@ -6,6 +6,11 @@
 // instance of class
 SiguesAhi sigues;
 
+// variables to be set by user
+// 16779: KKK
+// 70101: NRA
+int myPageID = 70101;
+
 // read information from that file
 char ssid[] = NETWORK_NAME;
 // pass is network password (WPA)
@@ -15,42 +20,13 @@ int status = WL_IDLE_STATUS;
 
 void setup() {
 
-  // Initialize serial and wait for port to open:
-  sigues.initialize();
-
-  // TODO: add explanation of example
-  sigues.setPageID(70101);
-
-  // check for the WiFi module:
-  if (WiFi.status() == WL_NO_MODULE) {
-    Serial.println("Communication with WiFi module failed!");
-    // don't continue
-    while (true)
-      ;
-  }
-
-  String fv = WiFi.firmwareVersion();
-  if (fv < WIFI_FIRMWARE_LATEST_VERSION) {
-    Serial.println("Please upgrade the firmware");
-  }
-
-  // attempt to connect to Wifi network:
-  while (status != WL_CONNECTED) {
-    Serial.print("Attempting to connect to");
-    Serial.println(ssid);
-    // Connect to WPA/WPA2 network. Change this line if using open or WEP
-    // network:
-    status = WiFi.begin(ssid, pass);
-
-    // wait 10 seconds for connection:
-    delay(10000);
-  }
-  Serial.println("Connected to wifi");
+  // initialize serial and wait for port to open
+  // argument is page ID
+  sigues.initialize(myPageID);
 
   //  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=National_Rifle_Association&exchars=128"
 
-  Serial.println("\nStarting connection to server...");
-  // if you get a connection, report back via serial:
+  Serial.println("Starting connection to server");
 
   sigues.connectingSSL();
 

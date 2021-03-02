@@ -3,18 +3,31 @@
 
 char server[] = "en.wikipedia.org";
 
-SiguesAhi::SiguesAhi() {
-  // TODO: add here
-}
+SiguesAhi::SiguesAhi() {}
 
-void SiguesAhi::initialize() {
+void SiguesAhi::initialize(int newPageID) {
+  // open serial port
   Serial.begin(9600);
   while (!Serial)
     ;
-  Serial.println("hey what up");
+  // set new page ID
+
+  setPageID(newPageID);
+
+  // hardware check
+  checkWifiModule();
+
+  // software check
+  checkFirmware();
+
+  // connect
+  connectInternet();
 }
 
-void SiguesAhi::setPageID(int newID) { wikiPageID = String(newID); }
+void SiguesAhi::setPageID(int newPageID) {
+  // set internal variable
+  wikiPageID = String(newPageID);
+}
 
 String SiguesAhi::getPageID() { return wikiPageID; }
 
@@ -106,4 +119,35 @@ void SiguesAhi::isClientConnected() {
     while (true)
       ;
   }
+}
+
+void SiguesAhi::checkWifiModule() {
+  if (WiFi.status() == WL_NO_MODULE) {
+    Serial.println("Communication with WiFi module failed!");
+    // don't continue
+    while (true)
+      ;
+  }
+}
+
+void SiguesAhi::checkFirmware() {
+  String fv = WiFi.firmwareVersion();
+  if (fv < WIFI_FIRMWARE_LATEST_VERSION) {
+    Serial.println("Please upgrade the firmware");
+  }
+}
+
+void SiguesAhi::connectInternet() {
+  // attempt to connect to Wifi network:
+  while (status != WL_CONNECTED) {
+    Serial.print("trying to connect to");
+    Serial.println(ssid);
+    // Connect to WPA/WPA2 network. Change this line if using open or WEP
+    // network:
+    status = WiFi.begin(ssid, pass);
+
+    // wait 10 seconds for connection:
+    delay(10000);
+  }
+  Serial.println("Connected to wifi");
 }

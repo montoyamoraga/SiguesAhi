@@ -24,9 +24,10 @@ public:
   SiguesAhi();
 
   // other functions
-  void initialize();
+  void initialize(int newPageID);
 
-  void setPageID(int newID);
+  void setPageID(int newPageID);
+
   String getPageID();
 
   void connectingSSL();
@@ -40,6 +41,12 @@ public:
   void isClientAvailable();
 
   void isClientConnected();
+
+  void checkWifiModule();
+
+  void checkFirmware();
+
+  void connectInternet();
 
   // TODO: add API so that this variable can be protected
   boolean wikiStillExists = true;
