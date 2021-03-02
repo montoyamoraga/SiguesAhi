@@ -18,8 +18,7 @@ void setup() {
   // and page ID, provided by variable
   sigues.initialize(NETWORK_NAME, NETWORK_PASS, myPageID);
 
-  Serial.println("Starting connection to server");
-
+  // TODO: document
   sigues.connectingSSL();
 
   sigues.checkStatus();
