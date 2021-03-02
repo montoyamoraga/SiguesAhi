@@ -14,8 +14,8 @@ char pass[] = NETWORK_PASS;
 int status = WL_IDLE_STATUS;
 
 void setup() {
-  
-  //Initialize serial and wait for port to open:
+
+  // Initialize serial and wait for port to open:
   sigues.initialize();
 
   // TODO: add explanation of example
@@ -25,7 +25,8 @@ void setup() {
   if (WiFi.status() == WL_NO_MODULE) {
     Serial.println("Communication with WiFi module failed!");
     // don't continue
-    while (true);
+    while (true)
+      ;
   }
 
   String fv = WiFi.firmwareVersion();
@@ -37,7 +38,8 @@ void setup() {
   while (status != WL_CONNECTED) {
     Serial.print("Attempting to connect to");
     Serial.println(ssid);
-    // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
+    // Connect to WPA/WPA2 network. Change this line if using open or WEP
+    // network:
     status = WiFi.begin(ssid, pass);
 
     // wait 10 seconds for connection:
@@ -60,8 +62,7 @@ void setup() {
 
   if (sigues.wikiStillExists) {
     Serial.println("oh no it still exists");
-  }
-  else {
+  } else {
     Serial.println("oh great it does not exist anymore");
   }
 }
@@ -74,5 +75,4 @@ void loop() {
   sigues.isClientAvailable();
 
   sigues.isClientConnected();
-
 }

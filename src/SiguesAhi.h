@@ -13,17 +13,16 @@
 
 // include libraries
 #include <Arduino.h>
-#include <Arduino_JSON.h>
 #include <ArduinoJson.h>
+#include <Arduino_JSON.h>
 #include <SPI.h>
 #include <WiFiNINA.h>
 
 class SiguesAhi {
 public:
-
   // constructor
   SiguesAhi();
-  
+
   // other functions
   void initialize();
 
@@ -61,9 +60,7 @@ public:
   String wikiNoPlural = " were ";
 
 protected:
-
   String wikiPageID;
-
 };
 
 // conditional compilation

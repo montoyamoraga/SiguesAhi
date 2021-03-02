@@ -9,23 +9,23 @@ SiguesAhi::SiguesAhi() {
 
 void SiguesAhi::initialize() {
   Serial.begin(9600);
-  while (!Serial);
+  while (!Serial)
+    ;
   Serial.println("hey what up");
 }
 
-void SiguesAhi::setPageID(int newID) {
-  wikiPageID = String(newID);
-}
+void SiguesAhi::setPageID(int newID) { wikiPageID = String(newID); }
 
-String SiguesAhi::getPageID() {
-  return wikiPageID;
-}
+String SiguesAhi::getPageID() { return wikiPageID; }
 
 void SiguesAhi::connectingSSL() {
   if (client.connectSSL(server, 443)) {
     Serial.println("connected to server");
     // Make a HTTP request:
-    client.println("GET /w/api.php?format=json&action=query&prop=extracts&explaintext&titles=National_Rifle_Association&exchars=128 HTTP/1.0");
+    client.println("GET "
+                   "/w/"
+                   "api.php?format=json&action=query&prop=extracts&explaintext&"
+                   "titles=National_Rifle_Association&exchars=128 HTTP/1.0");
     client.println("Host: en.wikipedia.org");
     client.println("Connection: close");
     client.println();
@@ -69,14 +69,20 @@ void SiguesAhi::parseJSON() {
 
   // extract values
   Serial.println(F("Response:"));
-  wikiExtract = doc["query"]["pages"][getPageID()]["extract"].as<char*>();
+  wikiExtract = doc["query"]["pages"][getPageID()]["extract"].as<char *>();
   Serial.println(wikiExtract);
 
-  for (int i = 0; i < wikiExtract.length() - wikiNoPlural.length(); i ++) {
-    if (wikiExtract.substring(i, i + wikiYesSingular.length()).equals(wikiYesSingular) || wikiExtract.substring(i, i + wikiYesPlural.length()).equals(wikiYesPlural)) {
+  for (int i = 0; i < wikiExtract.length() - wikiNoPlural.length(); i++) {
+    if (wikiExtract.substring(i, i + wikiYesSingular.length())
+            .equals(wikiYesSingular) ||
+        wikiExtract.substring(i, i + wikiYesPlural.length())
+            .equals(wikiYesPlural)) {
     }
 
-    if (wikiExtract.substring(i, i + wikiNoSingular.length()).equals(wikiNoSingular) || wikiExtract.substring(i, i + wikiNoPlural.length()).equals(wikiNoPlural)) {
+    if (wikiExtract.substring(i, i + wikiNoSingular.length())
+            .equals(wikiNoSingular) ||
+        wikiExtract.substring(i, i + wikiNoPlural.length())
+            .equals(wikiNoPlural)) {
       wikiStillExists = true;
     }
   }
@@ -97,6 +103,7 @@ void SiguesAhi::isClientConnected() {
     client.stop();
 
     // do nothing forever more:
-    while (true);
+    while (true)
+      ;
   }
 }
