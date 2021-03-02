@@ -8,22 +8,15 @@
 SiguesAhi sigues;
 
 // variables to be set by user
-// 16779: KKK
-// 70101: NRA
+// 16779: KKK, 70101: NRA
 int myPageID = 70101;
-
-// read information from that file
-// char ssid[] = NETWORK_NAME;
-// pass is network password (WPA)
-// char pass[] = NETWORK_PASS;
 
 void setup() {
 
   // initialize serial and wait for port to open
-  // argument is page ID
+  // argument are NETWORK_NAME and NETWORK_PASS, from secret.h
+  // and page ID, provided by variable
   sigues.initialize(NETWORK_NAME, NETWORK_PASS, myPageID);
-
-  //  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=National_Rifle_Association&exchars=128"
 
   Serial.println("Starting connection to server");
 

@@ -47,6 +47,9 @@ void SiguesAhi::setDebuggingMode(bool newState) {
   debuggingMode = newState;
 }
 
+ //  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=National_Rifle_Association&exchars=128"
+
+// TODO: make it depend on variables
 void SiguesAhi::connectingSSL() {
   if (client.connectSSL(server, 443)) {
     Serial.println("connected to server");
