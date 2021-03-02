@@ -141,7 +141,7 @@ void SiguesAhi::isClientConnected() {
 
 void SiguesAhi::checkWifiModule() {
   if (WiFi.status() == WL_NO_MODULE) {
-    Serial.println("Communication with WiFi module failed!");
+    Serial.println("communication with wifi module failed!");
     // don't continue
     while (true)
       ;
@@ -151,7 +151,8 @@ void SiguesAhi::checkWifiModule() {
 void SiguesAhi::checkFirmware() {
   String fv = WiFi.firmwareVersion();
   if (fv < WIFI_FIRMWARE_LATEST_VERSION) {
-    Serial.println("Please upgrade the firmware");
+    Serial.println("optional: upgrade firmware with WiFiNINA library");
+
   }
 }
 
