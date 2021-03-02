@@ -16,8 +16,6 @@ char ssid[] = NETWORK_NAME;
 // pass is network password (WPA)
 char pass[] = NETWORK_PASS;
 
-int status = WL_IDLE_STATUS;
-
 void setup() {
 
   // initialize serial and wait for port to open

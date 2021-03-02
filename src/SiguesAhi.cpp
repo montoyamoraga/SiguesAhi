@@ -3,6 +3,9 @@
 
 char server[] = "en.wikipedia.org";
 
+// TODO: maybe this can be deleted?
+int status = WL_IDLE_STATUS;
+
 SiguesAhi::SiguesAhi() {}
 
 void SiguesAhi::initialize(int newPageID) {
