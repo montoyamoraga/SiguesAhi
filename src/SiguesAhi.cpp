@@ -10,7 +10,8 @@ int status = WL_IDLE_STATUS;
 
 SiguesAhi::SiguesAhi() {}
 
-void SiguesAhi::initialize(String newNetworkName, String newNetworkPass, int newPageID) {
+void SiguesAhi::initialize(String newNetworkName, String newNetworkPass,
+                           int newPageID) {
   // open serial port
   Serial.begin(9600);
   while (!Serial)
@@ -39,15 +40,14 @@ void SiguesAhi::setPageID(int newPageID) {
 
 String SiguesAhi::getPageID() {
   // return String
-  return wikiPageID; 
+  return wikiPageID;
 }
 
 void SiguesAhi::setDebuggingMode(bool newState) {
   // set debuggingMode
   debuggingMode = newState;
 }
-
- //  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=National_Rifle_Association&exchars=128"
+//  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=National_Rifle_Association&exchars=128"
 
 // TODO: make it depend on variables
 void SiguesAhi::connectingSSL() {
@@ -161,15 +161,15 @@ void SiguesAhi::connectInternet() {
   while (status != WL_CONNECTED) {
     Serial.print("trying to connect to: ");
     Serial.println(ssid);
-    
+
     // conversion from string to char array
     // first initialize the arrays with the length
     char ssidCharArray[ssid.length() + 1];
     char passCharArray[pass.length() + 1];
 
     // then use function to populate them
-    ssid.toCharArray(ssidCharArray, ssid.length()+1);
-    pass.toCharArray(passCharArray, pass.length()+1);
+    ssid.toCharArray(ssidCharArray, ssid.length() + 1);
+    pass.toCharArray(passCharArray, pass.length() + 1);
 
     // Connect to WPA/WPA2. Modify if using open or WEP
     status = WiFi.begin(ssidCharArray, passCharArray);
