@@ -29,11 +29,7 @@ void setup() {
 
   sigues.parseJSON();
 
-  if (sigues.wikiStillExists) {
-    Serial.println("oh no it still exists");
-  } else {
-    Serial.println("oh great it does not exist anymore");
-  }
+  sigues.printExistence();
 }
 
 void loop() {

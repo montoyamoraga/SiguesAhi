@@ -53,6 +53,8 @@ public:
 
   void connectInternet();
 
+  void printExistence();
+
   // TODO: add API so that this variable can be protected
   boolean wikiStillExists = true;
 

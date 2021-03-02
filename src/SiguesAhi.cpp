@@ -73,10 +73,6 @@ void SiguesAhi::setWikiRequest(String newWikiPageTitle) {
   wikiRequest = wikiRequestPrefix + newWikiPageTitle + wikiRequestSuffix;
 }
 
-// https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&explaintext&exchars=128&titles=National_Rifle_Association
-void setWikiRequest(String newWikiTitle);
-
-// TODO: make it depend on variables
 void SiguesAhi::connectingSSL() {
 
   // connect through port 443
@@ -204,4 +200,12 @@ void SiguesAhi::connectInternet() {
     delay(10000);
   }
   Serial.println("connected to wifi");
+}
+
+void SiguesAhi::printExistence() {
+  if (sigues.wikiStillExists) {
+    Serial.println("oh no it still exists");
+  } else {
+    Serial.println("oh great it does not exist anymore");
+  }
 }
