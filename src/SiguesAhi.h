@@ -1,11 +1,8 @@
-// sigues-ahi
+// SiguesAhi.h
 
 // a project by aaron montoya-moraga
-// github.com/montoyamoraga/sigues-ahi
-
+// github.com/montoyamoraga/SiguesAhi
 // started in september 2020
-// alpha state
-// it is working but it is messy
 
 // conditional compilation
 #ifndef SIGUES_AHI_H
