@@ -30,10 +30,38 @@ public:
   void setPageID(int newID);
   String getPageID();
 
+  void connectingSSL();
+
+  void checkStatus();
+
+  void skipHeaders();
+
+  void parseJSON();
+
+  void isClientAvailable();
+
+  void isClientConnected();
+
   // TODO: add API so that this variable can be protected
   boolean wikiStillExists = true;
 
+  // Initialize the Ethernet client library
+  // with the IP address and port of the server
+  // that you want to connect to (port 80 is default for HTTP):
+  WiFiClient client;
+
+  // char server[] = "en.wikipedia.org";
+  // String server = "en.wikipedia.org";
+
+  String wikiExtract = "";
+
+  String wikiYesSingular = " is ";
+  String wikiYesPlural = " are ";
+  String wikiNoSingular = " was ";
+  String wikiNoPlural = " were ";
+
 protected:
+
   String wikiPageID;
 
 };
