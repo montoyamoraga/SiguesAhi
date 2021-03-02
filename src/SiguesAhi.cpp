@@ -29,7 +29,15 @@ void SiguesAhi::setPageID(int newPageID) {
   wikiPageID = String(newPageID);
 }
 
-String SiguesAhi::getPageID() { return wikiPageID; }
+String SiguesAhi::getPageID() {
+  // return String
+  return wikiPageID; 
+}
+
+void SiguesAhi::setDebuggingMode(bool newState) {
+  // set debuggingMode
+  debuggingMode = newState;
+}
 
 void SiguesAhi::connectingSSL() {
   if (client.connectSSL(server, 443)) {

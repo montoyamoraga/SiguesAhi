@@ -30,6 +30,8 @@ public:
 
   String getPageID();
 
+  void setDebuggingMode(bool newState);
+
   void connectingSSL();
 
   void checkStatus();
@@ -68,6 +70,7 @@ public:
 
 protected:
   String wikiPageID;
+  bool debuggingMode = false;
 };
 
 // conditional compilation
