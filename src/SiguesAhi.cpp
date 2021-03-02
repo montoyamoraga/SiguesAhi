@@ -130,7 +130,6 @@ void SiguesAhi::isClientAvailable() {
 void SiguesAhi::isClientConnected() {
   // if the server's disconnected, stop the client:
   if (!client.connected()) {
-    Serial.println();
     Serial.println("disconnecting from server.");
     client.stop();
 
