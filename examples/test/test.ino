@@ -11,8 +11,12 @@ SiguesAhi sigues;
 String myWikiPageTitle = "National_Rifle_Association";
 // 70101: NRA
 int myWikiPageID = 70101;
+// true for printing in console, false for
+bool myDebugging = true;
 
 void setup() {
+
+  sigues.setDebugging(myDebugging);
 
   // initialize serial and wait for port to open
   // argument are NETWORK_NAME and NETWORK_PASS, from secret.h

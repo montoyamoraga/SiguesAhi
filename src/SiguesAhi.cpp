@@ -5,21 +5,12 @@
 
 char server[] = "en.wikipedia.org";
 
-String wikiTitle = "National_Rifle_Association";
-
 // TODO: maybe this can be deleted?
 int status = WL_IDLE_STATUS;
 
 SiguesAhi::SiguesAhi() {}
 
 void SiguesAhi::setNetwork(String newNetworkName, String newNetworkPass) {
-
-  if (debuggingMode) {
-    // open serial port
-    Serial.begin(9600);
-    while (!Serial)
-      ;
-  }
 
   ssid = newNetworkName;
   pass = newNetworkPass;
@@ -36,6 +27,7 @@ void SiguesAhi::setNetwork(String newNetworkName, String newNetworkPass) {
 
 void SiguesAhi::setWiki(String newWikiPageTitle, int newWikiPageID) {
   setWikiPageTitle(newWikiPageTitle);
+  setWikiPageID(newWikiPageID);
 }
 
 void SiguesAhi::setWikiPageID(int newWikiPageID) {
@@ -48,21 +40,28 @@ String SiguesAhi::getWikiPageID() {
   return wikiPageID;
 }
 
-void SiguesAhi::setDebuggingMode(bool newState) {
+void SiguesAhi::setDebugging(bool newState) {
   // set debuggingMode
   debuggingMode = newState;
+  if (debuggingMode) {
+    // open serial port
+    Serial.begin(9600);
+    while (!Serial)
+      ;
+  }
 }
 
 String SiguesAhi::getWikiPageTitle() {
   // return String
-  return wikiTitle;
+  return wikiPageTitle;
 }
 
 void SiguesAhi::setWikiPageTitle(String newWikiPageTitle) {
   wikiPageTitle = newWikiPageTitle;
+  updateWikiRequest();
 }
 
-void SiguesAhi::setWikiRequest(String newWikiPageTitle) {
+void SiguesAhi::updateWikiRequest() {
 
   String wikiRequestPrefix = "GET "
                              "/w/"
@@ -70,7 +69,7 @@ void SiguesAhi::setWikiRequest(String newWikiPageTitle) {
                              "explaintext&exchars=128&titles=";
   String wikiRequestSuffix = " HTTP/1.0";
 
-  wikiRequest = wikiRequestPrefix + newWikiPageTitle + wikiRequestSuffix;
+  wikiRequest = wikiRequestPrefix + wikiPageTitle + wikiRequestSuffix;
 }
 
 void SiguesAhi::connectingSSL() {
@@ -203,7 +202,7 @@ void SiguesAhi::connectInternet() {
 }
 
 void SiguesAhi::printExistence() {
-  if (sigues.wikiStillExists) {
+  if (wikiStillExists) {
     Serial.println("oh no it still exists");
   } else {
     Serial.println("oh great it does not exist anymore");

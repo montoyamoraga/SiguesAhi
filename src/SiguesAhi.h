@@ -31,9 +31,9 @@ public:
   void setWikiPageID(int newWikiPageID);
   String getWikiPageID();
 
-  void setWikiRequest(String newWikiTitle);
+  void updateWikiRequest();
 
-  void setDebuggingMode(bool newState);
+  void setDebugging(bool newState);
 
   void connectingSSL();
 
@@ -72,7 +72,7 @@ public:
 
 protected:
   // debugging variables
-  bool debuggingMode = false;
+  bool debuggingMode = true;
   // network variables
   String ssid;
   String pass;
