@@ -1,0 +1,8 @@
+# KEYWORD1 is for datatypes, color orange
+SiguesAhi					KEYWORD1
+
+# KEYWORD2 is for functions, color brown
+setPageID					KEYWORD2
+getPageID					KEYWORD2
+
+# LITERAL1 is for constants
