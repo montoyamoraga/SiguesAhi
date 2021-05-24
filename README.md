@@ -2,7 +2,7 @@
 
 ## About
 
-"sigues ahí?" is an open source project by Aarón Montoya-Moraga, started in September 2020.
+SiguesAhi is an open source project by Aarón Montoya-Moraga, started in September 2020.
 
 This project is a digital instrument to check if institutions still exist, and alert when they don't anymore.
 
