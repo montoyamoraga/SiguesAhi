@@ -121,11 +121,11 @@ void SiguesAhi::parseJSON() {
   //   return;
   // }
 
-  JSONVar myArray = JSON.parse(client);
+//   JSONVar myArray = JSON.parse(client);
 
   // extract values
 
-  Serial.println(F("Response:"));
+//   Serial.println(F("Response:"));
 
   // wikiExtract = doc["query"]["pages"][getWikiPageID()]["extract"].as<char
   // *>(); Serial.println(wikiExtract);

@@ -8,8 +8,12 @@
 #ifndef SIGUES_AHI_H
 #define SIGUES_AHI_H
 
-// include libraries
+// include library Arduino
 #include <Arduino.h>
+
+// include library output base
+#include "SiguesAhiOutput.h"
+
 // #include <ArduinoJson.h>
 #include <Arduino_JSON.h>
 #include <SPI.h>
@@ -71,11 +75,17 @@ public:
   String wikiNoPlural = " were ";
 
 protected:
+  // pointer to output
+  SiguesAhiOutput *myInput = nullptr;
+
   // debugging variables
+  
   bool debuggingMode = true;
+  
   // network variables
   String ssid;
   String pass;
+  
   // wikipedia variables
   String wikiPageTitle;
   String wikiPageID;
