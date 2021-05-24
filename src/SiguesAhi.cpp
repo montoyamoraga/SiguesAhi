@@ -109,37 +109,41 @@ void SiguesAhi::skipHeaders() {
 
 void SiguesAhi::parseJSON() {
   // allocate the json document
-  const size_t capacity = JSON_OBJECT_SIZE(3) + JSON_ARRAY_SIZE(2) + 500;
-  DynamicJsonDocument doc(capacity);
+  // const size_t capacity = JSON_OBJECT_SIZE(3) + JSON_ARRAY_SIZE(2) + 500;
+  // DynamicJsonDocument doc(capacity);
 
   // Parse JSON object
-  DeserializationError error = deserializeJson(doc, client);
+  // DeserializationError error = deserializeJson(doc, client);
 
-  if (error) {
-    Serial.print(F("deserializeJson() failed: "));
-    Serial.println(error.c_str());
-    return;
-  }
+  // if (error) {
+  //   Serial.print(F("deserializeJson() failed: "));
+  //   Serial.println(error.c_str());
+  //   return;
+  // }
+
+  JSONVar myArray = JSON.parse(client);
 
   // extract values
+
   Serial.println(F("Response:"));
-  wikiExtract = doc["query"]["pages"][getWikiPageID()]["extract"].as<char *>();
-  Serial.println(wikiExtract);
 
-  for (int i = 0; i < wikiExtract.length() - wikiNoPlural.length(); i++) {
-    if (wikiExtract.substring(i, i + wikiYesSingular.length())
-            .equals(wikiYesSingular) ||
-        wikiExtract.substring(i, i + wikiYesPlural.length())
-            .equals(wikiYesPlural)) {
-    }
+  // wikiExtract = doc["query"]["pages"][getWikiPageID()]["extract"].as<char
+  // *>(); Serial.println(wikiExtract);
 
-    if (wikiExtract.substring(i, i + wikiNoSingular.length())
-            .equals(wikiNoSingular) ||
-        wikiExtract.substring(i, i + wikiNoPlural.length())
-            .equals(wikiNoPlural)) {
-      wikiStillExists = true;
-    }
-  }
+  // for (int i = 0; i < wikiExtract.length() - wikiNoPlural.length(); i++) {
+  //   if (wikiExtract.substring(i, i + wikiYesSingular.length())
+  //           .equals(wikiYesSingular) ||
+  //       wikiExtract.substring(i, i + wikiYesPlural.length())
+  //           .equals(wikiYesPlural)) {
+  //   }
+
+  //   if (wikiExtract.substring(i, i + wikiNoSingular.length())
+  //           .equals(wikiNoSingular) ||
+  //       wikiExtract.substring(i, i + wikiNoPlural.length())
+  //           .equals(wikiNoPlural)) {
+  //     wikiStillExists = true;
+  //   }
+  // }
 }
 
 void SiguesAhi::isClientAvailable() {

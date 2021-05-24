@@ -10,7 +10,7 @@
 
 // include libraries
 #include <Arduino.h>
-#include <ArduinoJson.h>
+// #include <ArduinoJson.h>
 #include <Arduino_JSON.h>
 #include <SPI.h>
 #include <WiFiNINA.h>
