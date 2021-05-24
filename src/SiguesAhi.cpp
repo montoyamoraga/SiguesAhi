@@ -3,12 +3,52 @@
 // include local library
 #include "SiguesAhi.h"
 
+/// @include library for each output
+#include "OutputPrinter.h"
+#include "OutputScreen.h"
+
 char server[] = "en.wikipedia.org";
 
 // TODO: maybe this can be deleted?
 int status = WL_IDLE_STATUS;
 
-SiguesAhi::SiguesAhi() {}
+SiguesAhi::SiguesAhi(OutputType outputType) {
+  if (outputType == OUTPUT_SCREEN) {
+    myOutput = new OutputScreen();
+  }
+  else if (outputType == OUTPUT_PRINTER) {
+    myOutput = new OutputPrinter();
+  }
+  else {
+    myOutput = new Output();
+  }
+
+   // update pointer to output
+  if (myOutput != nullptr) {
+    myOutput->sigues = this;
+  }
+}
+
+
+// destructor
+SiguesAhi::~SiguesAhi() {
+  if (myOutput != nullptr) {
+    delete myOutput;
+    myOutput = nullptr;
+  }
+}
+
+void SiguesAhi::setupOutputScreen() {
+  if (myOutput != nullptr) {
+    myOutput->setupOutputScreen();
+  }
+}
+
+void SiguesAhi::screenDrawWelcome() {
+  if (myOutput != nullptr) {
+    myOutput->screenDrawWelcome();
+  }
+}
 
 void SiguesAhi::setNetwork(String newNetworkName, String newNetworkPass) {
 
@@ -72,7 +112,7 @@ void SiguesAhi::updateWikiRequest() {
   wikiRequest = wikiRequestPrefix + wikiPageTitle + wikiRequestSuffix;
 }
 
-void SiguesAhi::connectingSSL() {
+void SiguesAhi::connectSSL() {
 
   // connect through port 443
   if (client.connectSSL(server, 443)) {

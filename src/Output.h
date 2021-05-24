@@ -7,11 +7,14 @@
 // forward declaration of class SiguesAhi
 class SiguesAhi;
 
-class SiguesAhiOutput {
+class Output {
   public:
 
   // virtual output destructor
-  virtual ~SiguesAhiOutput();
+  virtual ~Output() {}
+
+  virtual void setupOutputScreen() {}
+  virtual void screenDrawWelcome() {}
 
     // pointer to the SiguesAhi instance
     SiguesAhi *sigues = nullptr;

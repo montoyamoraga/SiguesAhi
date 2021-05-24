@@ -12,17 +12,32 @@
 #include <Arduino.h>
 
 // include library output base
-#include "SiguesAhiOutput.h"
+#include "Output.h"
 
 // #include <ArduinoJson.h>
 #include <Arduino_JSON.h>
 #include <SPI.h>
 #include <WiFiNINA.h>
 
+/// @enum to set the output type
+enum OutputType {
+  OUTPUT_PRINTER = 0,
+  OUTPUT_SCREEN = 1
+};
+
 class SiguesAhi {
 public:
   // constructor
-  SiguesAhi();
+  SiguesAhi(OutputType outputType);
+
+  // destructor
+  ~SiguesAhi();
+
+  // pointer to output
+  Output *myOutput = nullptr;
+
+  void setupOutputScreen();
+  void screenDrawWelcome();
 
   // other functions
   void setNetwork(String newNetworkName, String newNetworkPass);
@@ -39,7 +54,7 @@ public:
 
   void setDebugging(bool newState);
 
-  void connectingSSL();
+  void connectSSL();
 
   void checkStatus();
 
@@ -75,8 +90,6 @@ public:
   String wikiNoPlural = " were ";
 
 protected:
-  // pointer to output
-  SiguesAhiOutput *myInput = nullptr;
 
   // debugging variables
   
