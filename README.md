@@ -4,15 +4,11 @@
 
 SiguesAhi is an open source project by Aarón Montoya-Moraga, started in September 2020.
 
-This project is a digital instrument to check if institutions still exist, and alert when they don't anymore.
+It is a software library to make digital instruments able to check if institutions still exist, and alert when they don't anymore.
 
-The instrument periodically pings Wikipedia, and checks if the article is written in present or past tense. When it changes to past tense, the institution is no more, and the instrument emits beeping, text, or motion.
+The instruments periodically pings Wikipedia, and check if the article is written in present or past tense. When it changes to past tense, the institution is no more, and the instrument emits beeping, text, or motion.
 
-This repository includes the open source code, documentation about how it works, and instructions to build your own instrument.
-
-## Instrument
-
-This is a collection of three different sculptures.
+This repository includes the open source code and examples of the software library.
 
 ## Hardware
 
@@ -37,13 +33,14 @@ Add this code
 
 ### Bill of materials
 
-
 Core materials:
-* Arduino Nano 33 IoT, $19.00 USD, available at [https://store.arduino.cc/usa/nano-33-iot]()
+
+* Arduino Nano 33 IoT, $19.00 USD, available at [https://store.arduino.cc/usa/nano-33-iot](https://store.arduino.cc/usa/nano-33-iot)
 
 Optional materials:
-* Mini thermal receipt printer starter pack, $61.95 USD, available at [https://www.adafruit.com/product/600]()
-* Piezo buzzer, $1.50 USD, available at [https://www.adafruit.com/product/160]()
+
+* Mini thermal receipt printer starter pack, $61.95 USD, available at [https://www.adafruit.com/product/600](https://www.adafruit.com/product/600)
+* Piezo buzzer, $1.50 USD, available at [https://www.adafruit.com/product/160](https://www.adafruit.com/product/160)
 
 ### Programming
 
