@@ -2,7 +2,7 @@
 #include <SiguesAhi.h>
 
 // include file for internet login
-#include "secret.h"
+// #include "secret.h"
 
 // instance of class
 SiguesAhi sigues(OUTPUT_PRINTER);
