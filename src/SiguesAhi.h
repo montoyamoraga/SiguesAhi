@@ -22,7 +22,8 @@
 /// @enum to set the output type
 enum OutputType {
   OUTPUT_PRINTER = 0,
-  OUTPUT_SCREEN = 1
+  OUTPUT_SCREEN = 1,
+  OUTPUT_SERIAL = 2
 };
 
 class SiguesAhi {
