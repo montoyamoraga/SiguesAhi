@@ -5,7 +5,7 @@
 #include "secret.h"
 
 // instance of class
-SiguesAhi sigues;
+SiguesAhi sigues(OUTPUT_PRINTER);
 
 // or put your info here
 #ifndef NETWORK_NAME

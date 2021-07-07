@@ -14,7 +14,7 @@
 #endif
 
 // instance of class
-SiguesAhi sigues;
+SiguesAhi sigues(OUTPUT_SCREEN);
 
 // variables to be set by user
 String myWikiPageTitle = "National_Rifle_Association";
