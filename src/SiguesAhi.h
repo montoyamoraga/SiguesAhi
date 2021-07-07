@@ -14,7 +14,6 @@
 // include library output base
 #include "Output.h"
 
-// #include <ArduinoJson.h>
 #include <Arduino_JSON.h>
 #include <SPI.h>
 #include <WiFiNINA.h>

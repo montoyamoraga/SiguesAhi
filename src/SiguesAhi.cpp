@@ -1,6 +1,6 @@
 // SiguesAhi.cpp
 
-// include local library
+/// @include local library
 #include "SiguesAhi.h"
 
 /// @include library for each output
@@ -28,7 +28,6 @@ SiguesAhi::SiguesAhi(OutputType outputType) {
     myOutput->sigues = this;
   }
 }
-
 
 // destructor
 SiguesAhi::~SiguesAhi() {
@@ -147,6 +146,9 @@ void SiguesAhi::skipHeaders() {
   }
 }
 
+// this is a draft made with
+// library ArduinoJSON
+// needs to be updated
 void SiguesAhi::parseJSON() {
   // allocate the json document
   // const size_t capacity = JSON_OBJECT_SIZE(3) + JSON_ARRAY_SIZE(2) + 500;
@@ -194,12 +196,12 @@ void SiguesAhi::isClientAvailable() {
 }
 
 void SiguesAhi::isClientConnected() {
-  // if the server's disconnected, stop the client:
+  // if the server is disconnected, stop the client
   if (!client.connected()) {
     Serial.println("disconnecting from server.");
     client.stop();
 
-    // do nothing forever more:
+    // stay stuck forver
     while (true)
       ;
   }
@@ -222,7 +224,7 @@ void SiguesAhi::checkFirmware() {
 }
 
 void SiguesAhi::connectInternet() {
-  // attempt to connect to Wifi network:
+  // try to connect to wifi network:
   while (status != WL_CONNECTED) {
     Serial.print("trying to connect to: ");
     Serial.println(ssid);
