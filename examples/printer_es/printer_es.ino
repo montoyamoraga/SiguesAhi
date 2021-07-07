@@ -7,6 +7,15 @@
 // instance of class
 SiguesAhi sigues;
 
+// or put your info here
+#ifndef NETWORK_NAME
+#define NETWORK_NAME "replaceHere"
+#endif
+
+#ifndef NETWORK_PASS
+#define NETWORK_PASS "replaceHere"
+#endif
+
 // variables to be set by user
 String myWikiPageTitle = "National_Rifle_Association";
 // 70101: NRA

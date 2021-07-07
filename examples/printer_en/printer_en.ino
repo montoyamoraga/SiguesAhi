@@ -4,6 +4,15 @@
 // include file for internet login
 #include "secret.h"
 
+// or put your info here
+#ifndef NETWORK_NAME
+#define NETWORK_NAME "replaceHere"
+#endif
+
+#ifndef NETWORK_PASS
+#define NETWORK_PASS "replaceHere"
+#endif
+
 // instance of class
 SiguesAhi sigues;
 
