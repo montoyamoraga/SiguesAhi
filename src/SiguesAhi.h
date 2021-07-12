@@ -8,15 +8,21 @@
 #ifndef SIGUES_AHI_H
 #define SIGUES_AHI_H
 
-// include library Arduino
+/// @include library Arduino
 #include <Arduino.h>
 
-// include library output base
-#include "Output.h"
-
-#include <Arduino_JSON.h>
+/// @include libraries for commmunication
 #include <SPI.h>
 #include <WiFiNINA.h>
+
+/// @include libraries for parsing data
+#include <Arduino_JSON.h>
+
+/// @include libraries for inputting data
+#include <RotaryEncoder.h>
+
+/// @include library Output
+#include "Output.h"
 
 /// @enum to set the output type
 enum OutputType {
@@ -24,6 +30,7 @@ enum OutputType {
   OUTPUT_SCREEN = 1,
   OUTPUT_SERIAL = 2
 };
+
 
 class SiguesAhi {
 public:
