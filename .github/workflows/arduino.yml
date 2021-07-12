@@ -39,3 +39,4 @@ jobs:
           - name: Arduino_JSON
           - name: RotaryEncoder
           - name: WiFiNINA
+          - name: Adafruit Thermal Printer Library
