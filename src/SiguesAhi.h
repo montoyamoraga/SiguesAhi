@@ -31,13 +31,12 @@ enum OutputType {
   OUTPUT_SERIAL = 2
 };
 
-
 class SiguesAhi {
 public:
-  // constructor
+  /// @brief constructor
   SiguesAhi(OutputType outputType);
 
-  // destructor
+  // @brief destructor
   ~SiguesAhi();
 
   // pointer to output
