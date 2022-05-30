@@ -6,6 +6,7 @@
 /// @include library for each output
 #include "OutputPrinter.h"
 #include "OutputScreen.h"
+#include "OutputSerial.h"
 
 char server[] = "en.wikipedia.org";
 
@@ -18,6 +19,9 @@ SiguesAhi::SiguesAhi(OutputType outputType) {
   }
   else if (outputType == OUTPUT_PRINTER) {
     myOutput = new OutputPrinter();
+  }
+  else if (outputType == OUTPUT_SERIAL) {
+    myOutput = new OutputSerial();
   }
   else {
     myOutput = new Output();
