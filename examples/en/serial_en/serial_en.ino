@@ -2,7 +2,7 @@
 #include <SiguesAhi.h>
 
 // include file for internet login
-#include "secret.h"
+//#include "secret.h"
 
 // or put your info here
 #ifndef NETWORK_NAME
