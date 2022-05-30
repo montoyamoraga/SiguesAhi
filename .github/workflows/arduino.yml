@@ -41,3 +41,4 @@ jobs:
           - name: WiFiNINA
           - name: Adafruit Thermal Printer Library
           - name: Adafruit GFX Library
+          - name: Adafruit SSD1306
