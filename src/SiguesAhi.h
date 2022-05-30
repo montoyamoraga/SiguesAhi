@@ -60,6 +60,8 @@ public:
 
   void setDebugging(bool newState);
 
+  void checkExistence();
+
   void connectSSL();
 
   void checkStatus();

@@ -115,6 +115,13 @@ void SiguesAhi::updateWikiRequest() {
   wikiRequest = wikiRequestPrefix + wikiPageTitle + wikiRequestSuffix;
 }
 
+void SiguesAhi::checkExistence() {
+  SiguesAhi::connectSSL();
+  SiguesAhi::checkStatus();
+  SiguesAhi::skipHeaders();
+  SiguesAhi::parseJSON();
+}
+
 void SiguesAhi::connectSSL() {
 
   // connect through port 443
