@@ -9,7 +9,7 @@ checkStatus		KEYWORD2
 setDebugging	KEYWORD2
 skipHeaders		KEYWORD2
 parseJSON		KEYWORD2
-existencePrint	KEYWORD2
+printExistence	KEYWORD2
 
 # LITERAL1 is for constants
 OUTPUT_PRINTER	LITERAL1
