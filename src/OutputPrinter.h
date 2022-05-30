@@ -7,7 +7,7 @@
 // include library Output
 #include "Output.h"
 
-// include library TinyTrainable
+// include library SiguesAhi
 #include "SiguesAhi.h"
 
 // include library for output with Adafruit thermal printer
