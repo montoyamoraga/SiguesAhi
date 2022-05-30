@@ -40,3 +40,4 @@ jobs:
           - name: RotaryEncoder
           - name: WiFiNINA
           - name: Adafruit Thermal Printer Library
+          - name: Adafruit_GFX
