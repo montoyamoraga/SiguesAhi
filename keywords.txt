@@ -2,6 +2,7 @@
 SiguesAhi		KEYWORD1
 
 # KEYWORD2 - functions - brown
+checkExistence	KEYWORD2
 setNetwork		KEYWORD2
 setWiki			KEYWORD2
 connectSSL		KEYWORD2
