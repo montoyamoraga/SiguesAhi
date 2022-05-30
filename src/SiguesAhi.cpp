@@ -9,8 +9,8 @@
 #include "OutputSerial.h"
 
 char server[] = "en.wikipedia.org";
+char serverES[] = "en.wikipedia.org";
 
-// TODO: maybe this can be deleted?
 int status = WL_IDLE_STATUS;
 
 SiguesAhi::SiguesAhi(OutputType outputType) {
@@ -62,7 +62,7 @@ void SiguesAhi::setNetwork(String newNetworkName, String newNetworkPass) {
   checkWifiModule();
 
   // software check
-  checkFirmware();
+  // checkFirmware();
 
   // connect
   connectInternet();
@@ -119,8 +119,10 @@ void SiguesAhi::connectSSL() {
 
   // connect through port 443
   if (client.connectSSL(server, 443)) {
-
-    Serial.println("connected to server");
+    
+    if (debuggingMode) {
+      Serial.println("connected to server");
+    }
 
     client.println(wikiRequest);
     client.println("Host: en.wikipedia.org");
@@ -248,7 +250,9 @@ void SiguesAhi::connectInternet() {
     // wait 10 seconds for connection:
     delay(10000);
   }
-  Serial.println("connected to wifi");
+  if (debuggingMode) {
+    Serial.println("connected to wifi");
+  }
 }
 
 void SiguesAhi::printExistence() {
