@@ -98,7 +98,6 @@ public:
 protected:
 
   // debugging variables
-  
   bool debuggingMode = true;
   
   // network variables
