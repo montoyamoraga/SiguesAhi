@@ -90,6 +90,8 @@ public:
   // that you want to connect to (port 80 is default for HTTP):
   WiFiClient client;
 
+  String clientInput = "";
+
   String wikiExtract = "";
 
   String wikiYesSingular = " is ";

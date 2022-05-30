@@ -163,28 +163,25 @@ void SiguesAhi::skipHeaders() {
 // library ArduinoJSON
 // needs to be updated
 void SiguesAhi::parseJSON() {
-  // allocate the json document
-  // const size_t capacity = JSON_OBJECT_SIZE(3) + JSON_ARRAY_SIZE(2) + 500;
-  // DynamicJsonDocument doc(capacity);
 
-  // Parse JSON object
-  // DeserializationError error = deserializeJson(doc, client);
+  while (client.available()) {
+    char c = client.read();
+    // Serial.write(c);
+    clientInput = clientInput + c;
+  }
 
-  // if (error) {
-  //   Serial.print(F("deserializeJson() failed: "));
-  //   Serial.println(error.c_str());
-  //   return;
-  // }
+  Serial.println(clientInput);
 
-//   JSONVar myArray = JSON.parse(client);
+  JSONVar inputParsedJSON = JSON.parse(clientInput);
 
-  // extract values
+  // retrieve info from query / pages / pageID / extract
+  // and convert from JSON to String
+  String inputExtract = JSON.stringify(inputParsedJSON["query"]["pages"][wikiPageID]["extract"]);
 
-//   Serial.println(F("Response:"));
-
-  // wikiExtract = doc["query"]["pages"][getWikiPageID()]["extract"].as<char
-  // *>(); Serial.println(wikiExtract);
-
+  if (debuggingMode) {
+    Serial.println(inputExtract);
+  }
+  
   // for (int i = 0; i < wikiExtract.length() - wikiNoPlural.length(); i++) {
   //   if (wikiExtract.substring(i, i + wikiYesSingular.length())
   //           .equals(wikiYesSingular) ||
@@ -202,10 +199,14 @@ void SiguesAhi::parseJSON() {
 }
 
 void SiguesAhi::isClientAvailable() {
-  while (client.available()) {
-    char c = client.read();
-    Serial.write(c);
-  }
+
+  // while (client.available()) {
+  //   char c = client.read();
+  //   // Serial.write(c);
+  //   clientInput = clientInput + c;
+  // }
+
+  // Serial.println(clientInput);
 }
 
 void SiguesAhi::isClientConnected() {
