@@ -26,10 +26,11 @@
 
 /// @enum to set the output type
 enum OutputType {
-  OUTPUT_MIDI = 0,
-  OUTPUT_PRINTER = 1,
-  OUTPUT_SCREEN = 2,
-  OUTPUT_SERIAL = 3
+  OUTPUT_BUZZER = 0,
+  OUTPUT_MIDI = 1,
+  OUTPUT_PRINTER = 2,
+  OUTPUT_SCREEN = 3,
+  OUTPUT_SERIAL = 4
 };
 
 /// @enum to set the output type
