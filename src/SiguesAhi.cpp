@@ -16,9 +16,21 @@ SiguesAhi::SiguesAhi(Language language, OutputType outputType) {
   
   if (language == EN) {
     strcpy (server,"en.wikipedia.org");
+
+    wikiYes[0] = "is";
+    wikiYes[1] = "are";
+
+    wikiNo[0] = "was";
+    wikiNo[1] = "were";
   }
   else if (language == ES) {
     strcpy (server,"es.wikipedia.org");
+
+    wikiYes[0] = "es";
+    wikiYes[1] = "son";
+
+    wikiNo[0] = "fue";
+    wikiNo[1] = "fueron";
   }
   
   if (outputType == OUTPUT_SCREEN) {
@@ -188,21 +200,24 @@ void SiguesAhi::parseJSON() {
   if (debuggingMode) {
     Serial.println(inputExtract);
   }
-  
+
+  // TODO: check YES and check NO, adapt to 2d arrays of char
+  for (int i = 0; i < wikiExtract.length() - sizeof(SiguesAhi::wikiYes[0]); i++) {
+    if (wikiExtract.substring(i, i + sizeof(SiguesAhi::wikiYes[0])).equals(SiguesAhi::wikiYes[0]) || 
+    wikiExtract.substring(i, i + sizeof(SiguesAhi::wikiYes[0])).equals(SiguesAhi::wikiYes[0])) {
+      wikiStillExists = true;
+    }
+  }
+
+  // check NO
   // for (int i = 0; i < wikiExtract.length() - wikiNoPlural.length(); i++) {
+
   //   if (wikiExtract.substring(i, i + wikiYesSingular.length())
   //           .equals(wikiYesSingular) ||
   //       wikiExtract.substring(i, i + wikiYesPlural.length())
   //           .equals(wikiYesPlural)) {
-  //   }
+    // }
 
-  //   if (wikiExtract.substring(i, i + wikiNoSingular.length())
-  //           .equals(wikiNoSingular) ||
-  //       wikiExtract.substring(i, i + wikiNoPlural.length())
-  //           .equals(wikiNoPlural)) {
-  //     wikiStillExists = true;
-  //   }
-  // }
 }
 
 void SiguesAhi::isClientAvailable() {

@@ -100,17 +100,14 @@ public:
 
   String wikiExtract = "";
 
-  // TODO: turn into arrays for being able to pick according to language
+  char *wikiYes[2];
+  char *wikiNo[2];
 
-  String wikiENYesSingular = " is ";
-  String wikiENYesPlural = " are ";
-  String wikiENNoSingular = " was ";
-  String wikiENNoPlural = " were ";
+  // char *wikiYes[2] = {"es", "son"};
+  // char *wikiNo[2] = {"fue", "fueron"};
 
-  String wikiESYesSingular = " es ";
-  String wikiESYesPlural = " son ";
-  String wikiESNoSingular = " fue ";
-  String wikiESNoPlural = " fueron ";
+  // char *wikiYes[2] = {"is", "are"};
+  // char *wikiNo[2] = {"was", "were"};
 
 protected:
 

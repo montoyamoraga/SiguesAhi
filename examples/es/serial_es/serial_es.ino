@@ -27,6 +27,11 @@ void setup() {
 
   sigues.setDebugging(debugging);
 
+  Serial.println(sigues.wikiYes[0]);
+  Serial.println(sigues.wikiYes[1]);
+  Serial.println(sigues.wikiNo[0]);
+  Serial.println(sigues.wikiNo[1]);
+
   // initialize serial and wait for port to open
   // argument are NETWORK_NAME and NETWORK_PASS, from secret.h
   sigues.setNetwork(NETWORK_NAME, NETWORK_PASS);
