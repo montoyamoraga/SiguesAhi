@@ -9,11 +9,18 @@
 #include "OutputSerial.h"
 
 char server[] = "en.wikipedia.org";
-char serverES[] = "en.wikipedia.org";
 
 int status = WL_IDLE_STATUS;
 
-SiguesAhi::SiguesAhi(OutputType outputType) {
+SiguesAhi::SiguesAhi(Language language, OutputType outputType) {
+  
+  if (language == EN) {
+    strcpy (server,"en.wikipedia.org");
+  }
+  else if (language == ES) {
+    strcpy (server,"es.wikipedia.org");
+  }
+  
   if (outputType == OUTPUT_SCREEN) {
     myOutput = new OutputScreen();
   }

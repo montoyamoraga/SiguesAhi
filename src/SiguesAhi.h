@@ -31,10 +31,16 @@ enum OutputType {
   OUTPUT_SERIAL = 2
 };
 
+/// @enum to set the output type
+enum Language {
+  EN = 0,
+  ES = 1
+};
+
 class SiguesAhi {
 public:
   /// @brief constructor
-  SiguesAhi(OutputType outputType);
+  SiguesAhi(Language language, OutputType outputType);
 
   // @brief destructor
   ~SiguesAhi();

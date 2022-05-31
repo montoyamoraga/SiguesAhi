@@ -14,12 +14,12 @@
 #endif
 
 // instance of class
-SiguesAhi sigues(EN, OUTPUT_SERIAL);
+SiguesAhi sigues(ES, OUTPUT_SERIAL);
 
 // variables to be set by user
-String wikiPageTitle = "National_Rifle_Association";
+String wikiPageTitle = "Constitución_Política_de_la_República_de_Chile_de_1980";
 // 70101: NRA
-int wikiPageID = 70101;
+int wikiPageID = 15974;
 // true for printing in console, false for
 bool debugging = true;
 
