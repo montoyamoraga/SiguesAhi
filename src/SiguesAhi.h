@@ -100,10 +100,15 @@ public:
 
   String wikiExtract = "";
 
-  String wikiYesSingular = " is ";
-  String wikiYesPlural = " are ";
-  String wikiNoSingular = " was ";
-  String wikiNoPlural = " were ";
+  String wikiENYesSingular = " is ";
+  String wikiENYesPlural = " are ";
+  String wikiENNoSingular = " was ";
+  String wikiENNoPlural = " were ";
+
+  String wikiESYesSingular = " es ";
+  String wikiESYesPlural = " son ";
+  String wikiESNoSingular = " fue ";
+  String wikiESNoPlural = " fueron ";
 
 protected:
 
