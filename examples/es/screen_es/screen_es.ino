@@ -34,15 +34,15 @@ void setup() {
   sigues.setWiki(myWikiPageTitle, myWikiPageID);
 
   // TODO: document
-  sigues.connectingSSL();
+  // sigues.connectingSSL();
 
-  sigues.checkStatus();
+  // sigues.checkStatus();
 
-  sigues.skipHeaders();
+  // sigues.skipHeaders();
 
-  sigues.parseJSON();
+  // sigues.parseJSON();
 
-  sigues.printExistence();
+  // sigues.printExistence();
 }
 
 void loop() {
