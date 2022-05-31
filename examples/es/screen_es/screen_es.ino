@@ -17,33 +17,28 @@
 SiguesAhi sigues(ES, OUTPUT_SCREEN);
 
 // variables to be set by user
-String myWikiPageTitle = "National_Rifle_Association";
+String wikiPageTitle = "National_Rifle_Association";
 // 70101: NRA
-int myWikiPageID = 70101;
+int wikiPageID = 70101;
 // true for printing in console, false for
-bool myDebugging = true;
+bool debugging = true;
 
 void setup() {
 
-  sigues.setDebugging(myDebugging);
+  sigues.setDebugging(debugging);
 
   // initialize serial and wait for port to open
   // argument are NETWORK_NAME and NETWORK_PASS, from secret.h
   sigues.setNetwork(NETWORK_NAME, NETWORK_PASS);
 
-  sigues.setWiki(myWikiPageTitle, myWikiPageID);
+  // set wikipedia
+  sigues.setWiki(wikiPageTitle, wikiPageID);
 
-  // TODO: document
-  // sigues.connectingSSL();
+  sigues.checkExistence();
 
-  // sigues.checkStatus();
+  sigues.printExistence();
 
-  // sigues.skipHeaders();
-
-  // sigues.parseJSON();
-
-  // sigues.printExistence();
-}
+  }
 
 void loop() {
 
