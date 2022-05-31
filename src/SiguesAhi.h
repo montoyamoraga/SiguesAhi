@@ -100,6 +100,8 @@ public:
 
   String wikiExtract = "";
 
+  // TODO: turn into arrays for being able to pick according to language
+
   String wikiENYesSingular = " is ";
   String wikiENYesPlural = " are ";
   String wikiENNoSingular = " was ";
