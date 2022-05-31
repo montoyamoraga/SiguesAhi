@@ -4,6 +4,7 @@
 #include "SiguesAhi.h"
 
 /// @include library for each output
+#include "OutputMIDI.h"
 #include "OutputPrinter.h"
 #include "OutputScreen.h"
 #include "OutputSerial.h"
@@ -33,7 +34,10 @@ SiguesAhi::SiguesAhi(Language language, OutputType outputType) {
     wikiNo[1] = "fueron";
   }
   
-  if (outputType == OUTPUT_SCREEN) {
+  if (outputType == OUTPUT_MIDI) {
+    myOutput = new OutputMIDI();
+  }
+  else if (outputType == OUTPUT_SCREEN) {
     myOutput = new OutputScreen();
   }
   else if (outputType == OUTPUT_PRINTER) {
