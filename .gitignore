@@ -4,8 +4,6 @@
 # Arduino
 # ignore the file secret.h in any subfolder
 **/secret.h
-# this file allows you to edit the examples on the Arduino IDE
-.development
 
 # Visual Studio Code
 .vscode/
