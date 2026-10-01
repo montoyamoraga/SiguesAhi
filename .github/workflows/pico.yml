@@ -1,0 +1,48 @@
+# compila el ejemplo del pico sdk para pico w y pico 2 w
+
+name: Pico SDK
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/**
+      - pico/**
+      - CMakeLists.txt
+      - .github/workflows/pico.yml
+  pull_request:
+
+jobs:
+  compilar:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        placa: [pico_w, pico2_w]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar herramientas
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build gcc-arm-none-eabi \
+            libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
+
+      - name: Descargar pico sdk
+        run: |
+          git clone --depth 1 --branch 2.3.1 https://github.com/raspberrypi/pico-sdk.git ../pico-sdk
+          git -C ../pico-sdk submodule update --init --depth 1 \
+            lib/lwip lib/mbedtls lib/cyw43-driver lib/tinyusb
+
+      - name: Compilar
+        env:
+          PICO_SDK_PATH: ${{ github.workspace }}/../pico-sdk
+        run: |
+          cmake -S pico/ejemplos/SerialYLed -B build -G Ninja \
+            -DPICO_BOARD=${{ matrix.placa }} \
+            -DCMAKE_CXX_FLAGS_RELEASE="-O3 -DNDEBUG -Wall -Wextra"
+          cmake --build build
+          ls -la build/serial_y_led.uf2

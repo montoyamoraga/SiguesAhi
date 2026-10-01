@@ -7,3 +7,11 @@
 
 # Visual Studio Code
 .vscode/
+
+# pruebas en el computador
+extras/pruebas/pruebas
+extras/pruebas/pruebas.dSYM/
+
+# compilación con el pico sdk
+build/
+pico/ejemplos/*/build/

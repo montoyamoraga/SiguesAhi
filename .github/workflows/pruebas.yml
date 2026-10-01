@@ -1,0 +1,25 @@
+# pruebas de la lógica pura en el computador
+
+name: Pruebas
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/**
+      - extras/pruebas/**
+      - .github/workflows/pruebas.yml
+  pull_request:
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Descargar ArduinoJson
+        run: git clone --depth 1 --branch v7.4.3 https://github.com/bblanchon/ArduinoJson.git ../ArduinoJson
+
+      - name: Correr pruebas
+        run: make -C extras/pruebas ARDUINOJSON=$GITHUB_WORKSPACE/../ArduinoJson/src

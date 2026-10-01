@@ -1,20 +1,41 @@
-# KEYWORD1 - datatypes - orange
-SiguesAhi		KEYWORD1
+# KEYWORD1 - tipos de datos
+SiguesAhi	KEYWORD1
+SalidaSerial	KEYWORD1
+SalidaLed	KEYWORD1
+Salida	KEYWORD1
+Informe	KEYWORD1
+Estado	KEYWORD1
+Fase	KEYWORD1
+Error	KEYWORD1
+siguesahi	KEYWORD1
 
-# KEYWORD2 - functions - brown
-checkExistence	KEYWORD2
-setNetwork		KEYWORD2
-setWiki			KEYWORD2
-connectSSL		KEYWORD2
-checkStatus		KEYWORD2
-setDebugging	KEYWORD2
-skipHeaders		KEYWORD2
-parseJSON		KEYWORD2
-printExistence	KEYWORD2
+# KEYWORD2 - funciones
+configurarRed	KEYWORD2
+configurarEntidad	KEYWORD2
+configurarArticulo	KEYWORD2
+configurarIntervalo	KEYWORD2
+configurarConfirmaciones	KEYWORD2
+configurarAgenteUsuario	KEYWORD2
+configurarCertificados	KEYWORD2
+permitirConexionInsegura	KEYWORD2
+activarVigilante	KEYWORD2
+configurarRegistro	KEYWORD2
+agregarSalida	KEYWORD2
+comenzar	KEYWORD2
+actualizar	KEYWORD2
+consultarAhora	KEYWORD2
+informe	KEYWORD2
+estado	KEYWORD2
+existe	KEYWORD2
+yaNoExiste	KEYWORD2
+fechaDisolucion	KEYWORD2
+notificar	KEYWORD2
+nombreEstado	KEYWORD2
+nombreFase	KEYWORD2
+nombreError	KEYWORD2
 
-# LITERAL1 is for constants
-EN				LITERAL1
-ES				LITERAL1
-OUTPUT_PRINTER	LITERAL1
-OUTPUT_SCREEN	LITERAL1
-OUTPUT_SERIAL	LITERAL1
+# LITERAL1 - constantes
+SIGUES_AHI_VERSION	LITERAL1
+DESCONOCIDO	LITERAL1
+EXISTE	LITERAL1
+NO_EXISTE	LITERAL1
